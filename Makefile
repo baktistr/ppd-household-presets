@@ -1,13 +1,10 @@
-.PHONY: setup corpus notebooks test
+.PHONY: setup notebooks lab
 
 setup:          ## create .venv with the dependencies
 	uv sync
 
-corpus:         ## refresh data/corpus/flows.csv from ../ppd-preference-app
-	.venv/bin/python scripts/import_corpus.py
-
-notebooks:      ## run every notebook in order (writes data/)
+notebooks:      ## run every notebook in order: builds data/ and runs the checks inside them
 	cd notebooks && ../.venv/bin/jupyter nbconvert --to notebook --execute --inplace 0*.ipynb
 
-test:
-	.venv/bin/python -m pytest -q
+lab:            ## open the notebooks
+	.venv/bin/jupyter lab notebooks/

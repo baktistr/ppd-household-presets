@@ -70,8 +70,8 @@ Checked against draft-dsmullen-ppd-protocol-04 and draft-dsmullen-ppd-taxonomy-0
 
 | Notebook | Status | What it does |
 | --- | --- | --- |
-| `01_items.ipynb` | done | Builds the 6,272 items with flags: leaves the home, declared by a researched device, plausible, which limits apply |
-| `02_generate_households.ipynb` | done | 5,000 synthetic households from correlated latent traits; their decisions and questionnaire answers; checks against the literature; writes `data/` and the data card |
+| `01_items.ipynb` | done | The core terms, why the grid is 6,272, qualifiers as conditions, the plausibility flag, the real-device corpus; checks; writes `data/items.csv` |
+| `02_generate_households.ipynb` | done | The configuration; step by step: traits, sensitivities, the decision formula (worked by hand for one household and item, then for all), checks against the studies, the question bank and answers, trait–answer correlations; writes `data/` and the data card |
 | `03_clustering.ipynb` | next | k-medoids / Ward / k-means for k = 3–10; stability, preset fit, interpretability |
 | `04_presets.ipynb` | planned | Per-cluster decisions compressed into ≤ 15 household rules; coverage of real device flows |
 | `05_onboarding_tree.ipynb` | planned | Decision tree from answers to preset; ≤ 7 questions; against a one-preset baseline |
@@ -84,28 +84,24 @@ Needs Python 3.11+ and [uv](https://docs.astral.sh/uv/).
 
 ```bash
 make setup        # uv sync: creates .venv
-make notebooks    # runs the notebooks in order and writes data/
-make test
-.venv/bin/jupyter lab notebooks/
+make notebooks    # runs the notebooks in order: writes data/ and runs the checks inside them
+make lab          # opens Jupyter Lab on notebooks/
 ```
 
+**All code is in the notebooks**, with an explanation before each step; there is no separate package. Each notebook
+ends its steps with `assert` checks, so running the notebooks is the test. Run 01 before 02 (02 reads `data/items.csv`).
+
 `data/` is generated and gitignored, except `data/corpus/` (the researched device flows) and `data/sample/`
-(the first 200 households). Same config and seed give the same data; the data card records a hash of the decisions.
+(the first 200 households). Same notebooks and seed give the same data; the data card records a hash of the decisions.
 
 ## Layout
 
 ```
-config/generator.yaml      every generator number, with the study its direction comes from
-ppd_presets/
-  taxonomy.py              core terms (taxonomy-05 §6)
-  items.py                 the 6,272 items and their flags
-  generate.py              latent traits -> decisions
-  questions.py             candidate questions and how households answer them
-  dataset.py               write/read data/, the data card
-scripts/import_corpus.py   snapshot of the researched device flows from ppd-preference-app
-notebooks/                 the analysis, in order
-tests/                     taxonomy matches the draft and the app; reproducibility; decision rules
-data/corpus/flows.csv      88 flows from 4 researched devices (52 distinct items)
+notebooks/01_items.ipynb                  core terms, the items, flags, the corpus (refreshed from ../ppd-preference-app if present)
+notebooks/02_generate_households.ipynb    configuration (every number, with its source) and the generator
+data/corpus/flows.csv                     88 flows from 4 researched devices (52 distinct items), committed
+data/sample/                              first 200 households, committed
+pyproject.toml, uv.lock, Makefile         environment
 ```
 
 ## How a synthetic household decides
@@ -124,7 +120,7 @@ only); otherwise `deny`. Traits are continuous, not personas, so clustering has 
 recover a planted one.
 
 **This is not survey data.** The direction of each effect comes from the studies below; magnitudes are our
-choices, documented in `config/generator.yaml` and tested in `06_sensitivity`.
+choices, all in the configuration cell of notebook 02, to be varied in `06_sensitivity`.
 
 ## Sources
 
