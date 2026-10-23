@@ -1,12 +1,25 @@
 """The items: every core dataflow (data type x purpose x action x source x handling context = 6,272).
 
+Why this grid (draft-dsmullen-ppd-protocol-04 section 7.11): a policy rule names one value of each of the five core
+dimensions plus an effect, and a policy "SHOULD NOT contain two Policy Rule Objects with the same core dimensions
+but different effect values". So a household policy holds at most one rule per item, and one decision per item is
+exactly what a policy can express.
+
+Qualifiers are not items. Constraints are "structured qualifiers that refine the rule" (protocol-04 7.11-7.12) and
+"qualifiers on atomic dataflows" (taxonomy-05 6.7), so a qualifier refines an item's decision ("allow, refined by
+retention=ppd:ephemeral") instead of adding columns.
+
 Each item carries flags, never filters, so analyses can choose what to include:
 
 - ``leaves_home``: handling context is not ``ppd:householdContext`` (same test as the app's ``leavesHome``).
 - ``in_corpus`` / ``corpus_count`` / ``corpus_devices``: the item is declared by one of the researched devices.
-- ``plausible``: passes a few sense checks (see ``IMPLAUSIBLE``); implausible items stay in the table.
-- ``limits``: which modifiers can make the item acceptable. Retention ``ppd:ephemeral`` for every action;
-  ``ppd:inHomeOnly`` and ``ppd:onDeviceOnly`` only for use and inference (taxonomy-05 section 6.7.2).
+- ``plausible``: consistent with the term definitions (see ``IMPLAUSIBLE``); implausible items stay in the table.
+- ``limits``: qualifier values that can turn a deny into an allow for this item:
+  ``retention=ppd:ephemeral`` for every action (taxonomy-05 6.7.1 defines retention for all four actions);
+  ``processing_boundary=ppd:inHomeOnly`` / ``ppd:onDeviceOnly`` only for use and inference (taxonomy-05 6.7.2,
+  protocol-04 7.12; 6.7: a qualifier "outside its defined applicability" is invalid).
+  ``ppd:indefinite`` and ``ppd:approvedRemoteProcessing`` never make a flow more acceptable, so they are not limits.
+  Jurisdiction (6.7.3, a scope plus country/subdivision codes) is not modelled yet.
 """
 
 from __future__ import annotations
@@ -22,14 +35,15 @@ LIMIT_EPHEMERAL = "retention=ppd:ephemeral"
 LIMIT_IN_HOME = "processing_boundary=ppd:inHomeOnly"
 LIMIT_ON_DEVICE = "processing_boundary=ppd:onDeviceOnly"
 
-# Sense checks. Each is (reason, predicate over an item row). They only set the flag.
+# Consistency with the term definitions. Each is (reason, predicate over an item row). They only set the flag.
+# Only combinations the definitions themselves rule out are listed; anything merely unusual stays plausible.
 IMPLAUSIBLE = [
-    # Collecting *into* a public audience is not a collection; publishing is a transfer.
-    ("collection into a public audience", lambda r: r.action == "ppd:collection" and r.handling_context == "ppd:publicAudience"),
-    # A household-provided value is collected inside the household, not by a third party directly.
-    ("household data collected by a third party", lambda r: r.action == "ppd:collection" and r.source == "ppd:householdProvided" and r.handling_context == "ppd:thirdPartyContext"),
-    # Advertising inside the household context only, with nothing leaving, is not a meaningful flow.
-    ("advertising that never leaves the home", lambda r: r.purpose == "ppd:advertisingAndMarketing" and r.handling_context == "ppd:householdContext" and r.action == "ppd:collection"),
+    # taxonomy-05 6.6: ppd:publicAudience is "a disclosure context in which data is made available to the public".
+    # Disclosing is a transfer (6.4: "making data available to a different recipient or handling context");
+    # collection brings data into the participant's or service's own context, use operates "without disclosing it
+    # to a different recipient", and inference derives data.
+    ("public audience is a disclosure context; only transfer discloses",
+     lambda r: r.handling_context == "ppd:publicAudience" and r.action != "ppd:transfer"),
 ]
 
 

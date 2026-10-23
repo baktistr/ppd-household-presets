@@ -75,6 +75,9 @@ effect comes from Emami-Naeini et al. 2017, 2020 and 2021 (see `config/generator
 Use it to build and test the pipeline, and to see which questions matter under these assumptions, not to claim how
 real households behave.
 
+Why one decision per 5-field combination, why qualifiers are conditions inside a decision, and where each rule comes
+from in draft-dsmullen-ppd-protocol-04 and draft-dsmullen-ppd-taxonomy-05: README.md, "How this follows the PPD drafts".
+
 ## Files
 
 | File | Contents |

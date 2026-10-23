@@ -51,3 +51,11 @@ def test_every_question_is_answered_with_its_options():
     ans = answer(s.households, cfg, np.random.default_rng(1))
     for q in question_bank():
         assert set(ans[q["id"]]) <= set(q["options"]), q["id"]
+
+
+def test_public_audience_only_with_transfer_is_plausible():
+    # taxonomy-05 6.6: ppd:publicAudience is a disclosure context; only transfer discloses (6.4).
+    items = build_items()
+    public = items[items.handling_context == "ppd:publicAudience"]
+    assert set(public[public.plausible].action) == {"ppd:transfer"}
+    assert items.plausible.sum() == 6272 - 3 * (7 * 8 * 7)

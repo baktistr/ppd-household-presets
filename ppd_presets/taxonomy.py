@@ -53,7 +53,8 @@ HANDLING_CONTEXTS = [
 # Section 6.7, Dataflow Qualifiers. These are modifiers on an answer, not matrix columns.
 RETENTION = ["ppd:ephemeral", "ppd:indefinite"]  # 6.7.1
 PROCESSING_BOUNDARY = ["ppd:onDeviceOnly", "ppd:inHomeOnly", "ppd:approvedRemoteProcessing"]  # 6.7.2
-# 6.7.2: processing_boundary is defined only for use and inference.
+# 6.7.2 and protocol-04 7.12 ("processing-placement qualifier for use or inference within the declared handling
+# context"); 6.7: a qualifier outside its defined applicability is invalid.
 BOUNDARY_ACTIONS = {"ppd:use", "ppd:inference"}
 
 FIELDS = ["data_type", "purpose", "action", "source", "handling_context"]

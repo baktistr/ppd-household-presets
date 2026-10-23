@@ -7,8 +7,9 @@ Each household gets latent traits (config/generator.yaml). Its decision on an it
         - source_term[source] + noise
 
     allow                if u >= 0
-    allow if <limit>     else, if a modifier available for the item lifts u to >= 0 (checked in the order
-                         ephemeral retention, in-home processing, on-device processing)
+    allow if <limit>     else, if a qualifier value available for the item lifts u to >= 0 (checked in the order
+                         ephemeral retention, in-home processing, on-device processing). This is one PPD rule:
+                         effect allow with that qualifier in constraints (protocol-04 7.11-7.12).
     deny                 otherwise
 
 Traits are continuous (not personas), so clustering has to find structure rather than recover a planted one.
@@ -133,6 +134,12 @@ def generate(cfg: dict, items: pd.DataFrame, chunk: int = 1000) -> Synthetic:
              + rng.normal(0, ut["noise_sd"], size=(sl.stop - sl.start, m)))
 
         # What each modifier is worth for this household and item.
+        # - ephemeral retention (taxonomy-05 6.7.1): "not intended to result in durable persistence"; for transfer it
+        #   qualifies persistence by the receiving side. Worth less when the data stays home.
+        # - in-home / on-device processing (6.7.2): narrows where a use or inference *executes within* the declared
+        #   handling context; it does not change the context. A vendor-context use limited to inHomeOnly still serves
+        #   the vendor, but the processing stays inside the household trust boundary, so the recipient share of the
+        #   exposure drops. onDeviceOnly is the narrower of the two.
         gain_ephemeral = lim["ephemeral_gain"] * retention[sl, None] * s_h * np.where(home, lim["ephemeral_home_scale"], 1.0)[None, :]
         away_part = np.where(home[None, :], 0.0, rec)               # the recipient share of the exposure
         gain_in_home = np.where(boundary_ok[None, :], scale * lim["in_home_removes"] * away_part, -np.inf)
