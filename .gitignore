@@ -1,0 +1,9 @@
+# Generated data: regenerate with notebooks/02 (or `make data`). data/sample/ and data/corpus/ are committed.
+data/*
+!data/corpus/
+!data/sample/
+.venv/
+__pycache__/
+*.egg-info/
+.ipynb_checkpoints/
+.pytest_cache/

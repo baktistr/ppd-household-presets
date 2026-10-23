@@ -1,0 +1,31 @@
+[project]
+name = "ppd-household-presets"
+version = "0.1.0"
+description = "Household privacy presets for PPD: synthetic households, clustering, onboarding decision tree"
+requires-python = ">=3.11"
+dependencies = [
+  "numpy>=2.0",
+  "pandas>=2.2",
+  "scipy>=1.13",
+  "scikit-learn>=1.5",
+  "pyyaml>=6.0",
+  "matplotlib>=3.9",
+  "jupyterlab>=4.2",
+  "ipykernel>=6.29",
+  "nbconvert>=7.16",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+]
+
+[tool.setuptools]
+packages = ["ppd_presets"]
+
+[build-system]
+requires = ["setuptools>=70"]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
