@@ -5,17 +5,18 @@
     "by": "ppd-household-presets notebooks 01-07",
     "data": "synthetic households (not survey data); see data/DATACARD.md",
     "k": 8,
-    "depth": 6,
-    "questions_avg": 5.58,
-    "questions_max": 6,
-    "match_real_device_flows_cv": 0.852,
+    "depth": 5,
+    "questions_avg": 4.86,
+    "questions_max": 5,
+    "match_real_device_flows_cv": 0.851,
     "one_preset_for_everyone_cv": 0.828
   },
   "rule_format": "Like the app's Rule (shared/types.ts): scope lists core ppd: terms per field (a missing field means any), effect allow or dont_allow, strictest matching rule wins. New: 'condition' on an allow rule is a PPD qualifier the compiler must send as constraints (protocol-04 7.11-7.12); origin kind 'preset'. Exactly one rule of a preset matches any flow.",
   "presets": [
     {
       "id": "k8-p0",
-      "name": "Careful · no other companies or usage data · OK with keeping it home",
+      "name": "Privacy-tightened · Keep it at home",
+      "tier": "Privacy-tightened",
       "description": "Allows 45% of possible data flows, 9% only with conditions, and refuses 46%. Stricter than most households about other companies, usage data; more open about keeping it home.",
       "households_share": 0.212,
       "reached_by_onboarding": true,
@@ -476,10 +477,11 @@
     },
     {
       "id": "k8-p1",
-      "name": "Balanced · no personalization or anything public · OK with product improvement and fixing problems",
+      "name": "Balanced · No personalization",
+      "tier": "Balanced",
       "description": "Allows 59% of possible data flows, 4% only with conditions, and refuses 37%. Stricter than most households about personalization, anything public; more open about product improvement, fixing problems.",
       "households_share": 0.037,
-      "reached_by_onboarding": false,
+      "reached_by_onboarding": true,
       "rules": [
         {
           "id": "k8-p1-r0",
@@ -887,7 +889,8 @@
     },
     {
       "id": "k8-p2",
-      "name": "Balanced · no other companies or features · OK with ads and usage data",
+      "name": "Balanced · Device maker only",
+      "tier": "Balanced",
       "description": "Allows 62% of possible data flows, 7% only with conditions, and refuses 31%. Stricter than most households about other companies, features; more open about ads, usage data.",
       "households_share": 0.146,
       "reached_by_onboarding": true,
@@ -1264,7 +1267,8 @@
     },
     {
       "id": "k8-p3",
-      "name": "Balanced · no product improvement · OK with ads and personalization",
+      "name": "Balanced · Ads OK, no analytics",
+      "tier": "Balanced",
       "description": "Allows 69% of possible data flows, 7% only with conditions, and refuses 24%. Stricter than most households about product improvement; more open about ads, personalization.",
       "households_share": 0.055,
       "reached_by_onboarding": true,
@@ -1692,7 +1696,8 @@
     },
     {
       "id": "k8-p4",
-      "name": "Relaxed · OK with ads and product improvement",
+      "name": "Cloud-assisted · Ads and analytics OK",
+      "tier": "Cloud-assisted",
       "description": "Allows 79% of possible data flows, 7% only with conditions, and refuses 14%. Close to most households; more open about ads, product improvement.",
       "households_share": 0.191,
       "reached_by_onboarding": true,
@@ -2058,7 +2063,8 @@
     },
     {
       "id": "k8-p5",
-      "name": "Relaxed · no ads · OK with product improvement and other companies",
+      "name": "Cloud-assisted · No ads",
+      "tier": "Cloud-assisted",
       "description": "Allows 77% of possible data flows, 0% only with conditions, and refuses 23%. Stricter than most households about ads; more open about product improvement, other companies.",
       "households_share": 0.081,
       "reached_by_onboarding": true,
@@ -2449,7 +2455,8 @@
     },
     {
       "id": "k8-p6",
-      "name": "Balanced · no product improvement or ads · OK with personalization and fixing problems",
+      "name": "Balanced · No ads, no analytics",
+      "tier": "Balanced",
       "description": "Allows 64% of possible data flows, 5% only with conditions, and refuses 31%. Stricter than most households about product improvement, ads; more open about personalization, fixing problems.",
       "households_share": 0.046,
       "reached_by_onboarding": true,
@@ -2857,7 +2864,8 @@
     },
     {
       "id": "k8-p7",
-      "name": "Balanced · no ads or anything public · OK with product improvement and the maker",
+      "name": "Balanced · No ads, careful with sharing",
+      "tier": "Balanced",
       "description": "Allows 59% of possible data flows, 6% only with conditions, and refuses 35%. Stricter than most households about ads, anything public; more open about product improvement, the maker.",
       "households_share": 0.231,
       "reached_by_onboarding": true,
