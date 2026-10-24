@@ -71,7 +71,7 @@ Checked against draft-dsmullen-ppd-protocol-04 and draft-dsmullen-ppd-taxonomy-0
 | Notebook | Status | What it does |
 | --- | --- | --- |
 | `01_items.ipynb` | done | The core terms, why the grid is 6,272, qualifiers as conditions, the plausibility flag, the real-device corpus; checks; writes `data/items.csv` |
-| `02_generate_households.ipynb` | done | The configuration; step by step: traits, sensitivities, the decision formula (worked by hand for one household and item, then for all), checks against the studies, the question bank and answers, trait–answer correlations; writes `data/` and the data card |
+| `02_generate_households.ipynb` | done (v2) | The configuration; step by step: household facts, traits, sensitivity per data type, **attitude per purpose**, the decision formula (worked by hand, then for all, with per-cell noise), checks against the studies and against v1's weaknesses, 26 candidate questions incl. 5 concrete real-device questions, trait–answer correlations; writes `data/` (incl. per-cell averages) and the data card |
 | `03_clustering.ipynb` | next | k-medoids / Ward / k-means for k = 3–10; stability, preset fit, interpretability |
 | `04_presets.ipynb` | planned | Per-cluster decisions compressed into ≤ 15 household rules; coverage of real device flows |
 | `05_onboarding_tree.ipynb` | planned | Decision tree from answers to preset; ≤ 7 questions; against a one-preset baseline |
@@ -104,20 +104,23 @@ data/sample/                              first 200 households, committed
 pyproject.toml, uv.lock, Makefile         environment
 ```
 
-## How a synthetic household decides
+## How a synthetic household decides (v2)
 
-Traits (each 0–1, correlated): privacy concern, trust in the device maker, aversion to third parties, aversion to
-inference, retention sensitivity, how much it values features; plus children in the home. For each item:
+Each household has **facts** (smart devices, household size, age band; children follow household size), six general
+**traits** (concern, trust in the maker, aversion to third parties, aversion to inference, retention sensitivity,
+valuing features; correlated, nudged by the facts), a **sensitivity per data type** and its **own attitude per
+purpose**. For each item:
 
 ```
-u = intercept + benefit[purpose] × (0.5 + benefit_orientation)
-    − risk_weight × sensitivity[data type] × exposure(recipient, action) × (0.6 + concern)
-    − source_term[source] + noise
+u = intercept + attitude[purpose] × (0.5 + benefit_orientation)
+    − risk_weight × sensitivity[data type] × (0.7 + 0.6 × concern) × exposure(recipient, action)
+    − source_term[source] + noise per cell (data type × purpose × recipient) + a little noise per item
 ```
 
-`allow` if u ≥ 0; otherwise the first limit that lifts u to ≥ 0 (not kept, then in-home only, then on-device
-only); otherwise `deny`. Traits are continuous, not personas, so clustering has to find structure rather than
-recover a planted one.
+`allow` if u ≥ 0; otherwise the first condition that lifts u to ≥ 0 (not kept, then in-home only, then on-device
+only); otherwise `deny`. v2 follows Smullen et al. 2020 (PoPETs): purpose varies per person, and background facts and
+concrete decisions are useful profiling questions. With v2 the largest single pattern explains 18% of the variation
+(v1: 35%), and households differ in *which* purposes they accept, not only in how strict they are.
 
 **This is not survey data.** The direction of each effect comes from the studies below; magnitudes are our
 choices, all in the configuration cell of notebook 02, to be varied in `06_sensitivity`.
@@ -128,4 +131,7 @@ choices, all in the configuration cell of notebook 02, to be varied in `06_sensi
 - Emami-Naeini et al. 2020. *Ask the Experts: What Should Be on an IoT Privacy and Security Label?* IEEE S&P 2020.
 - Emami-Naeini et al. 2021. *Which Privacy and Security Attributes Most Impact Consumers' Risk Perception and
   Willingness to Purchase IoT Devices?* IEEE S&P 2021.
+- Smullen, Feng, Zhang, Sadeh 2020. *The Best of Both Worlds: Mitigating Trade-offs Between Accuracy and User
+  Burden in Capturing Mobile App Privacy Preferences.* PoPETs 2020(1). Privacy profiles from hierarchical
+  clustering, profiling with decision trees; the method this repository follows.
 - draft-dsmullen-ppd-taxonomy-05 (core terms), draft-dsmullen-ppd-protocol-04.
