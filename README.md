@@ -72,7 +72,7 @@ Checked against draft-dsmullen-ppd-protocol-04 and draft-dsmullen-ppd-taxonomy-0
 | --- | --- | --- |
 | `01_items.ipynb` | done | The core terms, why the grid is 6,272, qualifiers as conditions, the plausibility flag, the real-device corpus; checks; writes `data/items.csv` |
 | `02_generate_households.ipynb` | done (v2) | The configuration; step by step: household facts, traits, sensitivity per data type, **attitude per purpose**, the decision formula (worked by hand, then for all, with per-cell noise), checks against the studies and against v1's weaknesses, 26 candidate questions incl. 5 concrete real-device questions, trait–answer correlations; writes `data/` (incl. per-cell averages) and the data card |
-| `03_clustering.ipynb` | next | k-medoids / Ward / k-means for k = 3–10; stability, preset fit, interpretability |
+| `03_clustering.ipynb` | done | Profiles following Smullen et al. 2020: Ward hierarchical clustering on the 224 cell averages (k-means, average linkage for comparison), k = 1–40, 5-fold cross-validation, 80% agreement threshold (70/90% tested), three no-ask fallbacks; profile descriptions; saves `data/profiles/` for k = 4–24 |
 | `04_presets.ipynb` | planned | Per-cluster decisions compressed into ≤ 15 household rules; coverage of real device flows |
 | `05_onboarding_tree.ipynb` | planned | Decision tree from answers to preset; ≤ 7 questions; against a one-preset baseline |
 | `06_sensitivity.ipynb` | planned | Vary the generator weights ±50%; do presets and the first questions hold? |
