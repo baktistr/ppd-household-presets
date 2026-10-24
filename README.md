@@ -75,7 +75,7 @@ Checked against draft-dsmullen-ppd-protocol-04 and draft-dsmullen-ppd-taxonomy-0
 | `03_clustering.ipynb` | done | Profiles following Smullen et al. 2020: Ward hierarchical clustering on the 224 cell averages (k-means, average linkage for comparison), k = 1–40, 5-fold cross-validation, 80% agreement threshold (70/90% tested), three no-ask fallbacks; profile descriptions; saves `data/profiles/` for k = 4–24 |
 | `04_presets.ipynb` | done | Profiles → presets: fill low-agreement items with a no-ask fallback, compress 6,272 decisions into ≤ 15 non-overlapping rules (decision tree over the five fields), measure fidelity and household match, compare fallbacks, auto-name presets; saves `data/presets/` for k = 4–24 |
 | `05_onboarding_tree.ipynb` | done | Decision trees from the 26 candidate answers to a preset, for every k and depth, 5-fold cross-validation; each leaf gets the preset that best matches its households; choice by a question budget (S20); robustness without `concern` and with noisier answers; saves `data/onboarding_tree.json` |
-| `06_sensitivity.ipynb` | planned | Vary the generator weights ±50%; do presets and the first questions hold? |
+| `06_sensitivity.ipynb` | done | Reruns notebooks 02–05 unchanged on nine variants (purpose spread, per-cell noise, concern weight, third-party aversion at ×0.5/×1.5; noisier answers) and compares directions, the tree's gain over one preset, preset similarity and the questions used |
 | `07_export.ipynb` | planned | `presets.json` and the questionnaire for the app |
 
 ## Run it
