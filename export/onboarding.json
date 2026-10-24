@@ -17,7 +17,7 @@
   "disclaimer": "The questions, presets and tree come from synthetic households generated from published IoT privacy studies (Emami-Naeini et al. 2017, 2020, 2021) and the method of Smullen et al. 2020. They are not user-tested.",
   "questions": {
     "real_personalized_heating": {
-      "prompt": "Would you let your thermostat use who is home and the room climate to personalize your heating?",
+      "prompt": "Would you let a smart device use who is home and readings from your home to personalize how it works, without the data leaving your home?",
       "options": [
         {
           "id": "no",
@@ -85,7 +85,7 @@
       ]
     },
     "real_video_cloud": {
-      "prompt": "Would you let a camera send its video to the maker's cloud so you can watch it remotely?",
+      "prompt": "Would you let a device send video or audio from your home to its maker's cloud, so you can use it remotely?",
       "options": [
         {
           "id": "no",
@@ -102,7 +102,7 @@
       ]
     },
     "real_profile_ads": {
-      "prompt": "Would you let your TV use your viewing profile to show you ads?",
+      "prompt": "Would you let a device's maker use a profile of how you use it to show you ads?",
       "options": [
         {
           "id": "no",
@@ -161,7 +161,7 @@
       ]
     },
     "real_viewing_advertisers": {
-      "prompt": "Would you let your TV share what you watch with advertisers?",
+      "prompt": "Would you let a device's maker share how you use it with advertisers?",
       "options": [
         {
           "id": "no",
