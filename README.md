@@ -18,8 +18,12 @@ whose compiler turns them into PPD policies for each device. The full plan is in
 | | Real-device flows matched |
 | --- | --- |
 | One preset for everyone | 82.8% |
-| **Onboarding: 3.6 questions on average (max 4) → one of 12 presets** | **85.5%** (cross-validated) |
-| Ceiling with these presets | ~85.8% |
+| **Onboarding: 4.7 questions on average (max 6) → one of 8 presets** | **85.2%** (cross-validated) |
+| Ceiling with these presets | ~85.4% |
+
+8 presets is a team decision (easier to name and explain; 12 presets would give 85.5% with 4 questions). The tree
+gives exactly the household's own profile in 40% of cases, but the preset it gives agrees with the household's own
+preset on 93% of real-device flows on average (confusion matrix in notebook 05).
 
 The first question is *"Would you let your TV use your viewing profile to show you ads?"*; the tree relies mostly on
 concrete questions about real device flows. Across nine ±50% changes to the generator (notebook 06) the onboarding
