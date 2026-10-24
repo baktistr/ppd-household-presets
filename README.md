@@ -13,6 +13,19 @@ The presets end up as rules in the format of [ppd-preference-app](https://github
 whose compiler turns them into PPD policies for each device. The full plan is in the capstone docs:
 `docs/household-presets-clustering-plan.md`.
 
+## Current results (synthetic data)
+
+| | Real-device flows matched |
+| --- | --- |
+| One preset for everyone | 82.8% |
+| **Onboarding: 3.6 questions on average (max 4) → one of 12 presets** | **85.5%** (cross-validated) |
+| Ceiling with these presets | ~85.8% |
+
+The first question is *"Would you let your TV use your viewing profile to show you ads?"*; the tree relies mostly on
+concrete questions about real device flows. Across nine ±50% changes to the generator (notebook 06) the onboarding
+always beats one preset for everyone. The size of the gain depends on how much households differ by purpose, which
+the synthetic data assumes; calibrate with real answers before presets reach households.
+
 ## The matrix
 
 **Households × 6,272 core dataflows.** A dataflow (an *item*) is one combination of the core `ppd:` terms of
@@ -76,7 +89,7 @@ Checked against draft-dsmullen-ppd-protocol-04 and draft-dsmullen-ppd-taxonomy-0
 | `04_presets.ipynb` | done | Profiles → presets: fill low-agreement items with a no-ask fallback, compress 6,272 decisions into ≤ 15 non-overlapping rules (decision tree over the five fields), measure fidelity and household match, compare fallbacks, auto-name presets; saves `data/presets/` for k = 4–24 |
 | `05_onboarding_tree.ipynb` | done | Decision trees from the 26 candidate answers to a preset, for every k and depth, 5-fold cross-validation; each leaf gets the preset that best matches its households; choice by a question budget (S20); robustness without `concern` and with noisier answers; saves `data/onboarding_tree.json` |
 | `06_sensitivity.ipynb` | done | Reruns notebooks 02–05 unchanged on nine variants (purpose spread, per-cell noise, concern weight, third-party aversion at ×0.5/×1.5; noisier answers) and compares directions, the tree's gain over one preset, preset similarity and the questions used |
-| `07_export.ipynb` | planned | `presets.json` and the questionnaire for the app |
+| `07_export.ipynb` | done | Writes `export/presets.json` (plain-language names, descriptions and rule titles, app rule format + `condition`) and `export/onboarding.json` (pruned question tree); checks the exported files reproduce every preset exactly and walk to a preset for every household |
 
 ## Run it
 
@@ -101,6 +114,7 @@ notebooks/01_items.ipynb                  core terms, the items, flags, the corp
 notebooks/02_generate_households.ipynb    configuration (every number, with its source) and the generator
 data/corpus/flows.csv                     88 flows from 4 researched devices (52 distinct items), committed
 data/sample/                              first 200 households, committed
+export/presets.json, export/onboarding.json   what the app uses (notebook 07), committed
 pyproject.toml, uv.lock, Makefile         environment
 ```
 

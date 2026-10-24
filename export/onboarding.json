@@ -1,0 +1,372 @@
+{
+  "version": "2.0.0",
+  "kind": "tree",
+  "source": {
+    "generated": "2026-10-24",
+    "by": "ppd-household-presets notebooks 01-07",
+    "data": "synthetic households (not survey data); see data/DATACARD.md",
+    "k": 12,
+    "depth": 4,
+    "questions_avg": 3.86,
+    "questions_max": 4,
+    "match_real_device_flows_cv": 0.855,
+    "one_preset_for_everyone_cv": 0.828
+  },
+  "title": "Your household's privacy preset",
+  "description": "A few questions place your household in a privacy preset: a short set of rules your devices receive. You can change any rule afterwards.",
+  "disclaimer": "The questions, presets and tree come from synthetic households generated from published IoT privacy studies (Emami-Naeini et al. 2017, 2020, 2021) and the method of Smullen et al. 2020. They are not user-tested.",
+  "questions": {
+    "real_profile_ads": {
+      "prompt": "Would you let your TV use your viewing profile to show you ads?",
+      "options": [
+        {
+          "id": "no",
+          "label": "No"
+        },
+        {
+          "id": "with_limits",
+          "label": "Only with limits"
+        },
+        {
+          "id": "yes",
+          "label": "Yes"
+        }
+      ]
+    },
+    "real_usage_improve": {
+      "prompt": "Would you let a device send how you use it to its maker to improve their products?",
+      "options": [
+        {
+          "id": "no",
+          "label": "No"
+        },
+        {
+          "id": "with_limits",
+          "label": "Only with limits"
+        },
+        {
+          "id": "yes",
+          "label": "Yes"
+        }
+      ]
+    },
+    "concern": {
+      "prompt": "How much do you worry about what smart devices do with your data?",
+      "options": [
+        {
+          "id": "1",
+          "label": "1 · Not at all"
+        },
+        {
+          "id": "2",
+          "label": "2"
+        },
+        {
+          "id": "3",
+          "label": "3"
+        },
+        {
+          "id": "4",
+          "label": "4"
+        },
+        {
+          "id": "5",
+          "label": "5 · A lot"
+        }
+      ]
+    },
+    "real_video_cloud": {
+      "prompt": "Would you let a camera send its video to the maker's cloud so you can watch it remotely?",
+      "options": [
+        {
+          "id": "no",
+          "label": "No"
+        },
+        {
+          "id": "with_limits",
+          "label": "Only with limits"
+        },
+        {
+          "id": "yes",
+          "label": "Yes"
+        }
+      ]
+    },
+    "purpose_analytics": {
+      "prompt": "May companies use your data for: improving their products?",
+      "options": [
+        {
+          "id": "never",
+          "label": "Never"
+        },
+        {
+          "id": "ask",
+          "label": "It depends"
+        },
+        {
+          "id": "fine",
+          "label": "That's fine"
+        }
+      ]
+    },
+    "real_viewing_advertisers": {
+      "prompt": "Would you let your TV share what you watch with advertisers?",
+      "options": [
+        {
+          "id": "no",
+          "label": "No"
+        },
+        {
+          "id": "with_limits",
+          "label": "Only with limits"
+        },
+        {
+          "id": "yes",
+          "label": "Yes"
+        }
+      ]
+    }
+  },
+  "walk": "Show the root question; follow the branch whose 'answers' contain the chosen option; repeat until a node has 'preset'. A question can appear again further down a path with a finer split: reuse the earlier answer, never ask twice.",
+  "root": {
+    "question": "real_profile_ads",
+    "branches": [
+      {
+        "answers": [
+          "no"
+        ],
+        "next": {
+          "question": "real_usage_improve",
+          "branches": [
+            {
+              "answers": [
+                "no"
+              ],
+              "next": {
+                "question": "concern",
+                "branches": [
+                  {
+                    "answers": [
+                      "1",
+                      "2",
+                      "3"
+                    ],
+                    "next": {
+                      "preset": "k12-p9"
+                    }
+                  },
+                  {
+                    "answers": [
+                      "4",
+                      "5"
+                    ],
+                    "next": {
+                      "preset": "k12-p1"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "answers": [
+                "with_limits",
+                "yes"
+              ],
+              "next": {
+                "question": "concern",
+                "branches": [
+                  {
+                    "answers": [
+                      "1",
+                      "2"
+                    ],
+                    "next": {
+                      "question": "concern",
+                      "branches": [
+                        {
+                          "answers": [
+                            "1"
+                          ],
+                          "next": {
+                            "preset": "k12-p8"
+                          }
+                        },
+                        {
+                          "answers": [
+                            "2",
+                            "3",
+                            "4",
+                            "5"
+                          ],
+                          "next": {
+                            "preset": "k12-p10"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "answers": [
+                      "3",
+                      "4",
+                      "5"
+                    ],
+                    "next": {
+                      "question": "real_video_cloud",
+                      "branches": [
+                        {
+                          "answers": [
+                            "no",
+                            "with_limits"
+                          ],
+                          "next": {
+                            "preset": "k12-p11"
+                          }
+                        },
+                        {
+                          "answers": [
+                            "yes"
+                          ],
+                          "next": {
+                            "preset": "k12-p10"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "answers": [
+          "with_limits",
+          "yes"
+        ],
+        "next": {
+          "question": "real_usage_improve",
+          "branches": [
+            {
+              "answers": [
+                "no",
+                "with_limits"
+              ],
+              "next": {
+                "question": "concern",
+                "branches": [
+                  {
+                    "answers": [
+                      "1",
+                      "2",
+                      "3"
+                    ],
+                    "next": {
+                      "question": "purpose_analytics",
+                      "branches": [
+                        {
+                          "answers": [
+                            "never"
+                          ],
+                          "next": {
+                            "preset": "k12-p5"
+                          }
+                        },
+                        {
+                          "answers": [
+                            "ask",
+                            "fine"
+                          ],
+                          "next": {
+                            "preset": "k12-p6"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "answers": [
+                      "4",
+                      "5"
+                    ],
+                    "next": {
+                      "question": "real_viewing_advertisers",
+                      "branches": [
+                        {
+                          "answers": [
+                            "no"
+                          ],
+                          "next": {
+                            "preset": "k12-p0"
+                          }
+                        },
+                        {
+                          "answers": [
+                            "with_limits",
+                            "yes"
+                          ],
+                          "next": {
+                            "preset": "k12-p4"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "answers": [
+                "yes"
+              ],
+              "next": {
+                "question": "concern",
+                "branches": [
+                  {
+                    "answers": [
+                      "1",
+                      "2",
+                      "3"
+                    ],
+                    "next": {
+                      "question": "real_viewing_advertisers",
+                      "branches": [
+                        {
+                          "answers": [
+                            "no"
+                          ],
+                          "next": {
+                            "preset": "k12-p10"
+                          }
+                        },
+                        {
+                          "answers": [
+                            "with_limits",
+                            "yes"
+                          ],
+                          "next": {
+                            "preset": "k12-p6"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "answers": [
+                      "4",
+                      "5"
+                    ],
+                    "next": {
+                      "preset": "k12-p3"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
