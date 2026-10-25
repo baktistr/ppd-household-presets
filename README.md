@@ -20,18 +20,23 @@ whose compiler turns them into PPD policies for each device. The full plan is in
 | One preset for everyone | 82.8% |
 | **Onboarding: at most 5 questions (4.5 on average) → one of 8 presets** | **85.1%** (cross-validated) |
 
-The 8 presets (`export/presets.json`, at most 15 rules each):
+The 8 presets (`export/presets.json`, at most 15 rules each), ranked from the tightest privacy to the loosest by how
+much of all 6,272 possible data flows each refuses:
 
-| Preset | Households | In short |
-| --- | --- | --- |
-| Privacy-tightened · Keep it at home | 21% | strictest; home always fine, other companies and anything public rarely |
-| Balanced · No personalization | 4% | refuses personalization |
-| Balanced · Device maker only | 15% | trusts the maker, wary of other companies and anything public |
-| Balanced · Ads OK, no analytics | 6% | refuses product analytics, accepts ads |
-| Cloud-assisted · Ads and analytics OK | 19% | most accepting |
-| Cloud-assisted · No ads | 8% | refuses ads, accepts nearly everything else |
-| Balanced · No ads, no analytics | 5% | refuses ads and product analytics |
-| Balanced · No ads, careful with sharing | 23% | refuses ads, cautious with other companies and anything public |
+| Rank | Preset | Refuses | Allows only with conditions | Allows | Households | In short |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 | Privacy-tightened · Keep it at home | 46% | 9% | 45% | 21% | strictest; home always fine, other companies and anything public rarely |
+| 2 | Balanced · No personalization | 37% | 4% | 59% | 4% | refuses personalization |
+| 3 | Balanced · No ads, careful with sharing | 35% | 6% | 59% | 23% | refuses ads, cautious with other companies and anything public |
+| 4 | Balanced · Device maker only | 31% | 7% | 62% | 15% | trusts the maker, wary of other companies and anything public |
+| 5 | Balanced · No ads, no analytics | 31% | 5% | 64% | 5% | refuses ads and product analytics |
+| 6 | Balanced · Ads OK, no analytics | 24% | 7% | 69% | 6% | refuses product analytics, accepts ads |
+| 7 | Cloud-assisted · No ads | 23% | 0% | 77% | 8% | refuses ads, accepts nearly everything else |
+| 8 | Cloud-assisted · Ads and analytics OK | 14% | 7% | 79% | 19% | most accepting |
+
+The three shares add up to 100%. Ranks 4 and 5 refuse the same share; rank 4 puts conditions on more flows (not kept,
+processed in the home or on the device), so it comes first. The ranking only orders the presets for display
+(ppd-preference-app lists them this way); it does not change the clusters or their rules.
 
 Names start with one of CableLabs' example-policy tiers (Privacy-tightened below 55% of flows accepted, Balanced,
 Cloud-assisted above 75%), followed by what sets the preset apart. 8 presets is a team decision (easier to name and explain than 12–24, at most half a point lower). The tree uses balanced
