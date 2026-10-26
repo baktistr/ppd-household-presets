@@ -46,6 +46,30 @@ similarity in notebook 05). Across nine ±50% changes to the generator (notebook
 preset for everyone. The size of the gain depends on how much households differ by purpose, which the synthetic data
 assumes; calibrate with real answers before presets reach households.
 
+## The onboarding questions
+
+![The onboarding decision tree: questions on the left, the preset each path ends in on the right](export/onboarding-tree.svg)
+
+Start at the left, answer, and follow the arrow with your answer until you reach a preset. Nobody answers more than 5
+questions (4.5 on average); a question can come back further down a path with a finer split, and the app then reuses
+the earlier answer. The number before each preset is its rank in the table above (1 = tightest privacy, 8 = loosest).
+The picture shortens the questions and answers (*Limits* = "Only with limits", *Depends* = "It depends", *Fine* =
+"That's fine"); the full wording:
+
+| In the picture | Question | Answers |
+| --- | --- | --- |
+| Personalize from readings in your home (data stays home)? | Would you let a smart device use who is home and readings from your home to personalize how it works, without the data leaving your home? | No / Only with limits / Yes |
+| Your data for personalizing what you see? | May companies use your data for: personalizing what you see? | Never / It depends / That's fine |
+| Send how you use it to the maker to improve products? | Would you let a device send how you use it to its maker to improve their products? | No / Only with limits / Yes |
+| May how you use the device leave your home? | How you use the device: may it leave your home? | Never / It depends / That's fine |
+| Video or audio to the maker's cloud? | Would you let a device send video or audio from your home to its maker's cloud, so you can use it remotely? | No / Only with limits / Yes |
+| Maker uses a profile of your use for ads? | Would you let a device's maker use a profile of how you use it to show you ads? | No / Only with limits / Yes |
+| How much do you worry? (1-5) | How much do you worry about what smart devices do with your data? | 1 · Not at all / 2 / 3 / 4 / 5 · A lot |
+| Your data for improving products? | May companies use your data for: improving their products? | Never / It depends / That's fine |
+| Maker shares how you use it with advertisers? | Would you let a device's maker share how you use it with advertisers? | No / Only with limits / Yes |
+
+The picture is drawn by notebook 07 from `export/onboarding.json`, so it always matches the tree the app uses.
+
 ## The matrix
 
 **Households × 6,272 core dataflows.** A dataflow (an *item*) is one combination of the core `ppd:` terms of
@@ -109,7 +133,7 @@ Checked against draft-dsmullen-ppd-protocol-04 and draft-dsmullen-ppd-taxonomy-0
 | `04_presets.ipynb` | done | Profiles → presets: fill low-agreement items with a no-ask fallback, compress 6,272 decisions into ≤ 15 non-overlapping rules (decision tree over the five fields), measure fidelity and household match, compare fallbacks, auto-name presets; saves `data/presets/` for k = 4–24 |
 | `05_onboarding_tree.ipynb` | done | Decision trees (balanced class weights) from the 27 candidate answers to a preset; k = 8 by team decision; confusion matrix and preset similarity, for every k and depth, 5-fold cross-validation; each leaf gets the preset that best matches its households; choice by a question budget (S20); robustness without `concern` and with noisier answers; saves `data/onboarding_tree.json` |
 | `06_sensitivity.ipynb` | done | Reruns notebooks 02–05 unchanged on nine variants (purpose spread, per-cell noise, concern weight, third-party aversion at ×0.5/×1.5; noisier answers) and compares directions, the tree's gain over one preset, preset similarity and the questions used |
-| `07_export.ipynb` | done | Writes `export/presets.json` (plain-language names, descriptions and rule titles, app rule format + `condition`) and `export/onboarding.json` (pruned question tree); checks the exported files reproduce every preset exactly and walk to a preset for every household |
+| `07_export.ipynb` | done | Writes `export/presets.json` (plain-language names, descriptions and rule titles, app rule format + `condition`), `export/onboarding.json` (pruned question tree) and `export/onboarding-tree.svg` (the tree as a picture); checks the exported files reproduce every preset exactly and walk to a preset for every household |
 
 ## Run it
 
@@ -135,6 +159,7 @@ notebooks/02_generate_households.ipynb    configuration (every number, with its 
 data/corpus/flows.csv                     88 flows from 4 researched devices (52 distinct items), committed
 data/sample/                              first 200 households, committed
 export/presets.json, export/onboarding.json   what the app uses (notebook 07), committed
+export/onboarding-tree.svg                  the onboarding tree as a picture (notebook 07), committed
 pyproject.toml, uv.lock, Makefile         environment
 ```
 
