@@ -1,0 +1,9 @@
+target,value,low,high,study,where,note
+leaving_home_accept_share,0.47,0.42,0.52,naeini2017,§4.3.2,"Majority classifier barely over 50%, majority class always deny: roughly half of scenarios accepted"
+item_majority_accuracy,0.78,0.76,0.80,naeini2017,§4.3.2 Table 6,"Model from the factors, trained on other participants: 76-80% accuracy on held-out participants"
+profile_accuracy,0.83,0.75,0.90,smullen2020,§4.3,"Profiles: 75-90% across k; ~78% at 30 and ~83% at 40 interactions (for later notebooks)"
+retention_anonymity_effect,0.10,0.0,0.10,apthorpe2018,§4.2,"'if not stored' and 'if anonymous' changed acceptability significantly in < 10% of instances"
+owner_acceptance_delta_max,0.17,0.0,0.17,apthorpe2018,§4.3,"Owning a smart home device raised average acceptability a small amount; largest 0.17 (new features, maintenance)"
+recommendations_adopted,0.787,,,liu2016,abstract,"78.7% of recommendations adopted; 5.1% changed later (for later notebooks)"
+deployment_cluster_sizes,"17|39|25|21|17|37",,,liu2019,§6,"Six clusters, 156 users, Google Play PPA (for later notebooks)"
+retest_change,0.051,0.03,0.08,liu2016,abstract,"Participants changed 5.1% of the settings they had adopted: a household redrawing its decisions changes about 5% of them"

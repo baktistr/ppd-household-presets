@@ -1,0 +1,11 @@
+{
+  "presets_k": 4,
+  "decided": "2026-10-28",
+  "why": "Notebook 05 'Choose k and depth': only well-defined profiles (notebook 03: k-means, every profile's bootstrap stability >= 0.75 and every pair different on >= 10% of items; true for k = 2-4) whose presets the onboarding reaches (every preset used in every fold, each profile's households get their own preset at least half the time); among those the best match on all items after follow-ups (15 questions in total), then fewer questions. Rules per preset chosen at the knee of a sweep (notebook 04: 20-30 instead of a fixed 15). Result: k = 4, depth 6.",
+  "used_by": [
+    "notebooks/03_clustering.ipynb (profile description)",
+    "notebooks/04_presets.ipynb (fallback comparison, preset overview)",
+    "notebooks/05_onboarding_tree.ipynb (checked against the knee)"
+  ],
+  "depth": 6
+}

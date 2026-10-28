@@ -15,60 +15,59 @@ whose compiler turns them into PPD policies for each device. The full plan is in
 
 ## Current results (synthetic data)
 
-| | Real-device flows matched |
-| --- | --- |
-| One preset for everyone | 82.8% |
-| **Onboarding: at most 5 questions (4.5 on average) → one of 8 presets** | **85.1%** (cross-validated) |
+A household answers **at most 15 questions**: up to 6 concrete situations place it in one of **4 presets** (stage 1, the
+onboarding tree), and the rest go to follow-ups on the situations its preset is least sure about (stage 2, the "help me
+refine my settings" wizard). Its answers are then written into the preset's rules, so every household ends with its own
+policy (43 rules on average). Cross-validated match with households' own decisions:
 
-The 8 presets (`export/presets.json`, at most 15 rules each), ranked from the tightest privacy to the loosest by how
-much of all 6,272 possible data flows each refuses:
-
-| Rank | Preset | Refuses | Allows only with conditions | Allows | Households | In short |
-| --- | --- | --- | --- | --- | --- | --- |
-| 1 | Privacy-tightened · Keep it at home | 46% | 9% | 45% | 21% | strictest; home always fine, other companies and anything public rarely |
-| 2 | Balanced · No personalization | 37% | 4% | 59% | 4% | refuses personalization |
-| 3 | Balanced · No ads, careful with sharing | 35% | 6% | 59% | 23% | refuses ads, cautious with other companies and anything public |
-| 4 | Balanced · Device maker only | 31% | 7% | 62% | 15% | trusts the maker, wary of other companies and anything public |
-| 5 | Balanced · No ads, no analytics | 31% | 5% | 64% | 5% | refuses ads and product analytics |
-| 6 | Balanced · Ads OK, no analytics | 24% | 7% | 69% | 6% | refuses product analytics, accepts ads |
-| 7 | Cloud-assisted · No ads | 23% | 0% | 77% | 8% | refuses ads, accepts nearly everything else |
-| 8 | Cloud-assisted · Ads and analytics OK | 14% | 7% | 79% | 19% | most accepting |
-
-The three shares add up to 100%. Ranks 4 and 5 refuse the same share; rank 4 puts conditions on more flows (not kept,
-processed in the home or on the device), so it comes first. The ranking only orders the presets for display
-(ppd-preference-app lists them this way); it does not change the clusters or their rules.
-
-Names start with one of CableLabs' example-policy tiers (Privacy-tightened below 55% of flows accepted, Balanced,
-Cloud-assisted above 75%), followed by what sets the preset apart. 8 presets is a team decision (easier to name and explain than 12–24, at most half a point lower). The tree uses balanced
-class weights and a concrete question about the one real personalization flow, so every preset is reachable. It gives
-exactly the household's own profile in a minority of cases, but a similar preset (confusion matrix and preset
-similarity in notebook 05). Across nine ±50% changes to the generator (notebook 06) the onboarding always beats one
-preset for everyone. The size of the gain depends on how much households differ by purpose, which the synthetic data
-assumes; calibrate with real answers before presets reach households.
-
-## The onboarding questions
-
-![The onboarding decision tree: questions on the left, the preset each path ends in on the right](export/onboarding-tree.svg)
-
-Start at the left, answer, and follow the arrow with your answer until you reach a preset. Nobody answers more than 5
-questions (4.5 on average); a question can come back further down a path with a finer split, and the app then reuses
-the earlier answer. The number before each preset is its rank in the table above (1 = tightest privacy, 8 = loosest).
-The picture shortens the questions and answers (*Limits* = "Only with limits", *Depends* = "It depends", *Fine* =
-"That's fine"); the full wording:
-
-| In the picture | Question | Answers |
+| | All 6,272 flows | Real-device flows |
 | --- | --- | --- |
-| Personalize from readings in your home (data stays home)? | Would you let a smart device use who is home and readings from your home to personalize how it works, without the data leaving your home? | No / Only with limits / Yes |
-| Your data for personalizing what you see? | May companies use your data for: personalizing what you see? | Never / It depends / That's fine |
-| Send how you use it to the maker to improve products? | Would you let a device send how you use it to its maker to improve their products? | No / Only with limits / Yes |
-| May how you use the device leave your home? | How you use the device: may it leave your home? | Never / It depends / That's fine |
-| Video or audio to the maker's cloud? | Would you let a device send video or audio from your home to its maker's cloud, so you can use it remotely? | No / Only with limits / Yes |
-| Maker uses a profile of your use for ads? | Would you let a device's maker use a profile of how you use it to show you ads? | No / Only with limits / Yes |
-| How much do you worry? (1-5) | How much do you worry about what smart devices do with your data? | 1 · Not at all / 2 / 3 / 4 / 5 · A lot |
-| Your data for improving products? | May companies use your data for: improving their products? | Never / It depends / That's fine |
-| Maker shares how you use it with advertisers? | Would you let a device's maker share how you use it with advertisers? | No / Only with limits / Yes |
+| One preset for everyone | 73.9% | 87.9% |
+| After stage 1 (5.9 situations on average) | 78.6% | 89.1% |
+| **After stage 2 (15 questions in total)** | **80.3%** | **90.0%** |
 
-The picture is drawn by notebook 07 from `export/onboarding.json`, so it always matches the tree the app uses.
+The 4 presets (`export/presets.json`, 30 rules each), from the strictest to the most open. They are **internal**:
+households never see or choose a preset (week 9 with CableLabs: a list invites self-perception bias); the questionnaire
+assigns it.
+
+| | Preset (internal working name) | Refuses | Allows | Households |
+| --- | --- | --- | --- | --- |
+| 1 | Strict · no fixing problems or legal duties | 78% | 22% | 19% |
+| 2 | Strict · no product improvement or personalization · OK with features | 59% | 41% | 35% |
+| 3 | Careful · no ads · OK with security and device details | 40% | 60% | 31% |
+| 4 | Relaxed · OK with legal duties and fixing problems | 18% | 82% | 15% |
+
+**How the numbers were chosen** (recorded in `decisions.json`): only k = 2–4 give well-defined profiles (every profile
+stable when households are resampled, Hennig 2007, and every pair different on at least 10% of flows; notebook 03); the
+elbow of the clustering is at k = 3–4. Among onboarding trees that reach every preset and give each profile's
+households their own preset at least half the time, k = 4 at depth 6 matches best once follow-ups are in (notebook
+05). Rules per preset are chosen at the knee of a sweep (notebook 04): 30 for k = 4, against an earlier fixed 15 that
+cost accuracy. Each household's own profile's preset is given to 64% of households; the preset given agrees with it on
+97% of real-device flows. The profiles are mostly strictness levels; preferences about particular data types for
+particular purposes come in through stage 2, which asks about single data type × purpose situations.
+
+**Does it depend on our numbers?** Notebook 06 reruns notebooks 02–05 on seven variants of the grade-D assumptions
+(concern weight and household spreads ×0.5 and ×1.5, the studies' effects ×0.75 and ×1.25, no data type × purpose fit).
+In every variant the data keeps the studies' directions, well-defined profiles exist for k = 2–4 and no more, the rule
+chooses k = 4 (six variants) or k = 3 (household spreads ×1.5; near-ties between k = 3 and 4 can flip between runs), the onboarding reaches all of its presets, and the 15 questions beat one
+preset for everyone by 5.6–6.4 points on all flows. The number of presets is therefore a property of how continuous
+these households are; re-derive it (notebooks 03–05, same rules) once real answers are available.
+
+## The questionnaire
+
+![The onboarding tree: stage 1 situations on the left, the preset each path ends in on the right](export/onboarding-tree.svg)
+
+Every question is a **concrete situation with examples**, e.g. the first one: *"A device sends how you use your
+devices (for example, when you switch the lights on, or what you watch on TV) to the company that made it, to send you
+alerts and messages (for example, a doorbell or smoke alarm notification). Would you allow this?"* (No / It depends /
+Yes). Each stores an example per device class, so the app can show one from a device the household owns. The picture
+shortens situations to *data → where it goes, why*. Children are never asked about (week 9: future work).
+
+`export/onboarding.json` holds everything the app needs: the splash text, the tree, each leaf's preset with its ordered
+follow-ups and budget (15 minus the stage 1 questions), every question's full wording, and how answers become rules:
+a *yes* or *no* splits the preset rule covering that situation and adds the household's answer as its own rule (rules
+never overlap, so exactly one decides each flow); *It depends* keeps the preset. Rerunning the questionnaire **starts
+over**: the rules are rebuilt from the new answers, replacing manual edits after a warning.
 
 ## The matrix
 
@@ -127,13 +126,13 @@ Checked against draft-dsmullen-ppd-protocol-04 and draft-dsmullen-ppd-taxonomy-0
 
 | Notebook | Status | What it does |
 | --- | --- | --- |
-| `01_items.ipynb` | done | The core terms, why the grid is 6,272, qualifiers as conditions, the plausibility flag, the real-device corpus; checks; writes `data/items.csv` |
-| `02_generate_households.ipynb` | done (v2) | The configuration; step by step: household facts, traits, sensitivity per data type, **attitude per purpose**, the decision formula (worked by hand, then for all, with per-cell noise), checks against the studies and against v1's weaknesses, 27 candidate questions incl. 6 concrete real-device questions, trait–answer correlations; writes `data/` (incl. per-cell averages) and the data card |
-| `03_clustering.ipynb` | done | Profiles following Smullen et al. 2020: Ward hierarchical clustering on the 224 cell averages (k-means, average linkage for comparison), k = 1–40, 5-fold cross-validation, 80% agreement threshold (70/90% tested), three no-ask fallbacks; profile descriptions; saves `data/profiles/` for k = 4–24 |
-| `04_presets.ipynb` | done | Profiles → presets: fill low-agreement items with a no-ask fallback, compress 6,272 decisions into ≤ 15 non-overlapping rules (decision tree over the five fields), measure fidelity and household match, compare fallbacks, auto-name presets; saves `data/presets/` for k = 4–24 |
-| `05_onboarding_tree.ipynb` | done | Decision trees (balanced class weights) from the 27 candidate answers to a preset; k = 8 by team decision; confusion matrix and preset similarity, for every k and depth, 5-fold cross-validation; each leaf gets the preset that best matches its households; choice by a question budget (S20); robustness without `concern` and with noisier answers; saves `data/onboarding_tree.json` |
-| `06_sensitivity.ipynb` | done | Reruns notebooks 02–05 unchanged on nine variants (purpose spread, per-cell noise, concern weight, third-party aversion at ×0.5/×1.5; noisier answers) and compares directions, the tree's gain over one preset, preset similarity and the questions used |
-| `07_export.ipynb` | done | Writes `export/presets.json` (plain-language names, descriptions and rule titles, app rule format + `condition`), `export/onboarding.json` (pruned question tree) and `export/onboarding-tree.svg` (the tree as a picture); checks the exported files reproduce every preset exactly and walk to a preset for every household |
+| `01_items.ipynb` | done | The core terms, why the grid is 6,272, qualifiers as conditions, the plausibility flag, the real-device corpus, device classes and their fit cells (household model only; PPD has no device field); checks; writes `data/items.csv`, `data/corpus/device_classes.csv`, `data/corpus/device_fit.csv` |
+| `02_generate_households.ipynb` | done | **A** evidence → parameters: study effects mapped to PPD terms (`references/crosswalk.csv`), pooled and graded A–D, written to `data/parameters.json`; **B** the generator: a mixed-effects logistic model (study effects, a data type × purpose fit table, one primary data type × purpose concern type per household, household effects per purpose, data type and handling context, device-class fit), β0, spread and noise calibrated to the studies; **C** candidate questions: realistic situations with examples per device class, answered from each household's own decisions (no children question); **D** checks against the studies; writes `data/` and the data card |
+| `03_clustering.ipynb` | done | Profiles following Smullen et al. 2020, with k-means (Ward and average linkage compared): k = 1–40, 5-fold cross-validation, 80% agreement threshold, no-ask fallbacks; **well-defined profiles** (bootstrap stability per profile, Hennig 2007, and distinctness, saved as `data/profiles/quality.csv`); comparison with S20's accuracy and overlap and Liu's cluster sizes; saves `data/profiles/` for k = 2–24 |
+| `04_presets.ipynb` | done | Profiles → presets: fill low-agreement items with a no-ask fallback, compress 6,272 decisions into non-overlapping rules with the **rule count chosen at the knee of a sweep** (5–160 rules), measure fidelity and household match, compare fallbacks; saves `data/presets/` for k = 2–24 |
+| `05_onboarding_tree.ipynb` | done | Stage 1: decision trees from the candidate answers to a preset, for every k and depth (5-fold cross-validation); **stage 2: follow-ups** on the cells the leaf's two most likely profiles are least sure about, within a 15-question cap; k and depth chosen among trees that reach every well-defined profile, by match after follow-ups (`decisions.json`); confusion matrix, robustness, flowchart (`reports/onboarding-tree.svg`); saves `data/onboarding_tree.json` |
+| `06_sensitivity.ipynb` | done | Reruns notebooks 02–05 unchanged on seven variants (concern weight and household spreads ×0.5/×1.5, study effects ×0.75/×1.25, no data type × purpose fit) and compares directions, well-defined k, the chosen (k, depth) and the questionnaire's gain over one preset |
+| `07_export.ipynb` | done | Writes `export/presets.json` (internal presets, rules with plain-language titles), `export/onboarding.json` (splash, tree, follow-ups, questions with examples, how answers become rules) and `export/onboarding-tree.svg`; checks the exported files reproduce every preset, that writing every household's answers into the rules gives exactly notebook 05's result, and that one rule decides every flow |
 
 ## Run it
 
@@ -155,34 +154,57 @@ ends its steps with `assert` checks, so running the notebooks is the test. Run 0
 
 ```
 notebooks/01_items.ipynb                  core terms, the items, flags, the corpus (refreshed from ../ppd-preference-app if present)
-notebooks/02_generate_households.ipynb    configuration (every number, with its source) and the generator
+notebooks/02_generate_households.ipynb    evidence → parameters, the generator, answers, checks
+references/                               the studies (PDFs, local), extracted tables, crosswalk.csv (study terms → PPD terms)
+data/parameters.json                      every effect with its value, grade and sources, committed
+decisions.json                            the chosen k and depth (k = 4, depth 6) with the reason, read by notebooks 03-05; 05 checks it against its rule, committed
+data/corpus/device_classes.csv, device_fit.csv   device classes for the household model, committed
 data/corpus/flows.csv                     88 flows from 4 researched devices (52 distinct items), committed
 data/sample/                              first 200 households, committed
 export/presets.json, export/onboarding.json   what the app uses (notebook 07), committed
 export/onboarding-tree.svg                  the onboarding tree as a picture (notebook 07), committed
+reports/                                  the tree, follow-ups per leaf and a flowchart, for reading (notebook 05 and by hand)
 pyproject.toml, uv.lock, Makefile         environment
 ```
 
-## How a synthetic household decides (v2)
+## How a synthetic household decides (v3)
 
-Each household has **facts** (smart devices, household size, age band; children follow household size), six general
-**traits** (concern, trust in the maker, aversion to third parties, aversion to inference, retention sensitivity,
-valuing features; correlated, nudged by the facts), a **sensitivity per data type** and its **own attitude per
-purpose**. For each item:
+Each household has **facts** (smart devices and the device classes they are, household size, age band; children follow
+household size), a concern and a literacy level, and **household effects** on the log-odds of allowing: an overall
+level, one per purpose, one per data type, one per handling context leaving the home, and one per data type × purpose.
+For each item (data type *t*, purpose *p*, action *a*, source *s*, handling context *c*):
 
 ```
-u = intercept + attitude[purpose] × (0.5 + benefit_orientation)
-    − risk_weight × sensitivity[data type] × (0.7 + 0.6 × concern) × exposure(recipient, action)
-    − source_term[source] + noise per cell (data type × purpose × recipient) + a little noise per item
+η = β0 + β_type[t] + β_purpose[p] + w[a]·β_context[c] + β_action[a] + β_source[s]       ← from the studies (data/parameters.json)
+      + fit, if a device class the household owns needs this (t, p, c) cell                 ← Apthorpe 2018 §4.3, §5.7
+      + facts + concern + S · household effects
+u = η + τ · noise (shared within a cell, and across the handling contexts of one flow)
 ```
 
-`allow` if u ≥ 0; otherwise the first condition that lifts u to ≥ 0 (not kept, then in-home only, then on-device
-only); otherwise `deny`. v2 follows Smullen et al. 2020 (PoPETs): purpose varies per person, and background facts and
-concrete decisions are useful profiling questions. With v2 the largest single pattern explains 18% of the variation
-(v1: 35%), and households differ in *which* purposes they accept, not only in how strict they are.
+`allow` if u ≥ 0; otherwise *allow if not kept*, *in-home only* or *on-device only* when that condition lifts u to ≥ 0
+(small effects: retention and anonymity are the weakest factors in the studies); otherwise `deny`.
 
-**This is not survey data.** The direction of each effect comes from the studies below; magnitudes are our
-choices, all in the configuration cell of notebook 02, to be varied in `06_sensitivity`.
+**Where the numbers come from.** Study terms are mapped onto PPD core terms in `references/crosswalk.csv` (a study's
+"recipient" is `handling_context` read with `action`, taxonomy-05 §6.6; a named company is a role). Each study's
+effects, as differences from a shared baseline term, are pooled per PPD term and graded: A (smart-home study, exact
+match), B (looser match), C (other domain), D (our assumption). Three numbers are calibrated: β0 so that 47% of flows
+leaving the home are accepted and the spread scale S so that the population's majority answer fits 78% of decisions
+(Emami-Naeini et al. 2017), and the noise τ so that redrawing a household's decisions changes about 5% of them
+(Liu et al. 2016). Notebook 02's checks rerun the studies' contrasts on the synthetic households (same signs, same
+order of terms).
+
+**Data type × purpose** (week 9): a small fit table (data used for a purpose it serves is more accepted, sensitive data
+for ads less), and one primary **concern type** per household (recordings, whereabouts, identity, habits, telemetry,
+or none; sometimes a weaker second one) that lowers acceptance of the data type × purpose combinations it covers.
+Sizes are grade D; the direction follows Apthorpe 2018 §5.7 and the Android profiles of Liu et al., which differ by
+which permissions people grant.
+
+**Device classes** (camera, lock & entry, thermostat & sensors, voice assistant, TV & media, light & plug, appliance)
+are ours: PPD defines none and has no device field, so the household policy stays one decision per item for every
+device. A class only makes its fit cells a little more accepted for households that own it.
+
+**This is not survey data.** Most household spreads and several terms no study covers are grade D; the data card lists
+them, and the sensitivity notebook must vary them.
 
 ## Sources
 
@@ -193,4 +215,12 @@ choices, all in the configuration cell of notebook 02, to be varied in `06_sensi
 - Smullen, Feng, Zhang, Sadeh 2020. *The Best of Both Worlds: Mitigating Trade-offs Between Accuracy and User
   Burden in Capturing Mobile App Privacy Preferences.* PoPETs 2020(1). Privacy profiles from hierarchical
   clustering, profiling with decision trees; the method this repository follows.
+- Apthorpe, Shvartzshnaider, Mathur, Reisman, Feamster 2018. *Discovering Smart Home Internet of Things Privacy Norms
+  Using Contextual Integrity.* IMWUT 2(2).
+- Zhang, Feng, Bauer, Cranor, Das, Sadeh 2021. *"Did you know this camera tracks your mood?": Understanding Privacy
+  Expectations and Preferences in the Age of Video Analytics.* PoPETs 2021(2).
+- Liu et al. 2016. *Follow My Recommendations: A Personalized Privacy Assistant for Mobile App Permissions.* SOUPS 2016.
+- Bin Liu 2019. *Can Machine Learning Help People Configure Their Mobile App Privacy Settings?* PhD thesis, CMU.
 - draft-dsmullen-ppd-taxonomy-05 (core terms), draft-dsmullen-ppd-protocol-04.
+
+What each study gives the generator: `references/README.md`.

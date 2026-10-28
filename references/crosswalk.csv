@@ -1,0 +1,66 @@
+study,factor,level,ppd_field,ppd_terms,relation,confidence,used,rationale
+apthorpe2018,recipient,family,handling_context,ppd:householdContext,exact,high,yes,taxonomy-05 §6.6: remains within the household-local relationship
+apthorpe2018,recipient,other_devices,handling_context,ppd:householdContext,exact,high,yes,§6.6: using data within a household hub is householdContext
+apthorpe2018,recipient,doctor,handling_context,ppd:thirdPartyContext,narrower,medium,yes,§6.6: an entity outside the primary vendor or household relationship
+apthorpe2018,recipient,police,handling_context,ppd:thirdPartyContext,narrower,high,yes,§6.6: outside vendor and household
+apthorpe2018,recipient,manufacturer,handling_context,ppd:vendorContext,exact,high,yes,§6.6: sending data to the device vendor is vendorContext
+apthorpe2018,recipient,isp,handling_context,ppd:thirdPartyContext,narrower,high,yes,§6.6: outside vendor and household
+apthorpe2018,recipient,social_media,handling_context,ppd:publicAudience,partial,medium,yes,§6.6: made available to an open audience; an owner's account is partly bounded
+apthorpe2018,recipient,intelligence,handling_context,ppd:thirdPartyContext,narrower,high,yes,§6.6: outside vendor and household
+apthorpe2018,transmission_principle,null,purpose,,none,high,baseline,No purpose stated; flows are transfers (Apthorpe: a device sends information to a recipient)
+apthorpe2018,transmission_principle,maintenance,purpose,ppd:diagnosticsAndMaintenance,exact,high,yes,§6.3: troubleshoot or maintain
+apthorpe2018,transmission_principle,new_features,purpose,ppd:analyticsAndImprovement,narrower,high,yes,§6.3: analyze operation or improve products
+apthorpe2018,transmission_principle,advertising,purpose,ppd:advertisingAndMarketing,exact,high,yes,§6.3: target or deliver advertising
+apthorpe2018,transmission_principle,emergency,purpose,ppd:security,partial,medium,yes,§6.3: safety and security; an emergency is a safety case
+apthorpe2018,transmission_principle,not_stored,constraint,retention=ppd:ephemeral,exact,high,yes,§6.7.1: not intended to result in durable persistence
+apthorpe2018,transmission_principle,stored_indefinitely,constraint,retention=ppd:indefinite,exact,high,no,§6.7.1; never makes a flow more acceptable so it is not a condition
+apthorpe2018,transmission_principle,anonymous,constraint,,none,high,no,No PPD qualifier for anonymity
+apthorpe2018,transmission_principle,consent,constraint,,none,high,no,Not expressible in a PPD rule (the household policy is itself the consent)
+apthorpe2018,transmission_principle,notified,constraint,,none,high,no,Not expressible in a PPD rule
+apthorpe2018,transmission_principle,privacy_policy,constraint,,none,high,no,Not expressible in a PPD rule
+apthorpe2018,transmission_principle,confidential,constraint,,none,high,no,Not expressible in a PPD rule
+apthorpe2018,transmission_principle,price_discount,purpose,,none,medium,no,A benefit to the person rather than a handling purpose
+apthorpe2018,attribute,location,data_type,ppd:locationData,exact,high,yes,§6.2: physical location or movement
+apthorpe2018,attribute,video,data_type,ppd:contentData,exact,high,yes,§6.2: content captured as recordings
+apthorpe2018,attribute,audio,data_type,ppd:contentData,exact,high,yes,§6.2: content captured as recordings
+apthorpe2018,attribute,heart_rate,data_type,ppd:sensorData,exact,high,yes,§6.2: non-content measured data
+apthorpe2018,attribute,times_home,data_type,ppd:sensorData,exact,high,yes,§6.2: non-content observed data (occupancy)
+apthorpe2018,attribute,times_used,data_type,ppd:usageData,exact,high,yes,§6.2: interaction with the device
+apthorpe2018,attribute,exercise_routine,action,ppd:inference,partial,medium,inference,Derived conclusion about a person (§6.4 inference) on sensor or usage data
+apthorpe2018,attribute,sleeping_habits,action,ppd:inference,partial,medium,inference,Derived conclusion about a person (§6.4 inference) on sensor or usage data
+apthorpe2018,attribute,eating_habits,action,ppd:inference,partial,medium,inference,Derived conclusion about a person (§6.4 inference) on sensor or usage data
+apthorpe2018,sender,security_camera,device_class,camera,none,high,model,Not a PPD field; household model only (device classes)
+apthorpe2018,sender,door_lock,device_class,lock_entry,none,high,model,Not a PPD field; household model only
+apthorpe2018,sender,thermostat,device_class,thermostat_sensors,none,high,model,Not a PPD field; household model only
+apthorpe2018,sender,power_meter,device_class,thermostat_sensors,none,medium,model,Not a PPD field; household model only
+apthorpe2018,sender,personal_assistant,device_class,voice_assistant,none,high,model,Not a PPD field; household model only
+apthorpe2018,sender,refrigerator,device_class,appliance,none,high,model,Not a PPD field; household model only
+apthorpe2018,sender,fitness_tracker,device_class,,none,high,fit,Personal device; used only for the fit effect
+apthorpe2018,sender,sleep_monitor,device_class,,none,high,no,Personal device
+naeini2017,data_type,specific position,data_type,ppd:locationData,exact,high,baseline,§6.2: physical location
+naeini2017,data_type,presence,data_type,ppd:sensorData,exact,high,yes,§6.2: non-content observed data
+naeini2017,data_type,temperature,data_type,ppd:sensorData,exact,high,yes,§6.2: non-content measured data
+naeini2017,data_type,video,data_type,ppd:contentData,exact,high,yes,§6.2: content captured
+naeini2017,data_type,biometric,data_type,ppd:identifierData,partial,low,yes,§6.2: data used to identify a user; face images are also content (ask Daniel)
+naeini2017,user_perceived_benefit,beneficial,purpose,ppd:coreFunctionality,partial,low,baseline,Benefit to the person; core functionality is the clearest such purpose
+naeini2017,user_perceived_benefit,not beneficial,purpose,ppd:advertisingAndMarketing,partial,low,yes,Benefit to the collector; advertising is the clearest such purpose (analytics also fits)
+naeini2017,user_perceived_benefit,purpose unspecified,purpose,,none,high,no,PPD always declares a purpose
+naeini2017,location,house,,,none,high,filter,Not a PPD field; only the house levels of data x location are used
+zhang2021,purpose,generic surveillance,purpose,ppd:security,narrower,medium,yes,§6.3: safety and security
+zhang2021,purpose,petty crime (anon),purpose,ppd:security,narrower,high,yes,§6.3: safety and security
+zhang2021,purpose,criminal detection (IDed),purpose,ppd:security,narrower,high,yes,§6.3: safety and security
+zhang2021,purpose,count people (anon),purpose,ppd:analyticsAndImprovement,narrower,high,yes,§6.3: analyze operation
+zhang2021,purpose,rate service (anon),purpose,ppd:analyticsAndImprovement,narrower,medium,yes,§6.3: analyze operation
+zhang2021,purpose,rate engagement (IDed),purpose,ppd:analyticsAndImprovement,narrower,medium,yes,§6.3: analyze operation
+zhang2021,purpose,jump line (IDed),purpose,ppd:advertisingAndMarketing,narrower,medium,yes,§6.3: marketing offers
+zhang2021,purpose,targeted ads (anon),purpose,ppd:advertisingAndMarketing,narrower,high,yes,§6.3: target advertising
+zhang2021,purpose,targeted ads (IDed),purpose,ppd:advertisingAndMarketing,narrower,high,yes,§6.3: target advertising
+zhang2021,purpose,sentiment ads (anon),purpose,ppd:advertisingAndMarketing,narrower,high,yes,§6.3: target advertising
+zhang2021,purpose,sentiment ads (IDed),purpose,ppd:advertisingAndMarketing,narrower,high,yes,§6.3: target advertising
+zhang2021,purpose,face as ID (IDed),purpose,ppd:coreFunctionality,partial,low,no,Identification in public venues; not home core functionality
+zhang2021,purpose,track attendance (IDed),purpose,ppd:coreFunctionality,partial,low,no,Identification in public venues; not home core functionality
+zhang2021,purpose,work productivity (IDed),action,ppd:inference,partial,low,no,Decisions about a person by a third party; no PPD purpose
+zhang2021,purpose,health predictions (IDed),action,ppd:inference,partial,low,no,Decisions about a person by a third party; no PPD purpose
+zhang2021,purpose,medical predictions (IDed),action,ppd:inference,partial,low,no,Decisions about a person by a third party; no PPD purpose
+zhang2021,raw_retention,ephemeral,constraint,retention=ppd:ephemeral,exact,medium,yes,§6.7.1; baseline 30 days has no PPD term
+zhang2021,shared,shared,action,ppd:transfer,broader,low,no,Recipient not given; not usable as a handling context

@@ -1,0 +1,10 @@
+factor,level,estimate,std_err,baseline,note
+data_type,biometric,0.01,0.24,specific position,Table 7 (allow/deny GLMM); positive = more likely to deny
+data_type,presence,-2.87,0.35,specific position,Table 7
+data_type,temperature,-3.66,0.37,specific position,Table 7
+data_type,video,0.43,0.23,specific position,Table 7
+data_type_at_home,presence,0.42,0.41,specific position:friend's house,Table 7 data:location interaction for house; not significant
+data_type_at_home,temperature,0.23,0.42,specific position:friend's house,Table 7 data:location interaction for house; not significant
+user_perceived_benefit,not beneficial,2.85,0.17,beneficial,Table 7
+user_perceived_benefit,purpose unspecified,1.67,0.17,beneficial,Table 7
+shared_x_benefit,being shared:not beneficial,0.62,0.19,not being shared:beneficial,Table 7

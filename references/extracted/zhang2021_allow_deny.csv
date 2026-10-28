@@ -1,0 +1,19 @@
+factor,level,estimate,std_err,baseline,note
+purpose,generic surveillance,0.0,,generic surveillance,Table 6 baseline; positive = more likely to deny
+purpose,petty crime (anon),0.57922,0.52134,generic surveillance,Table 6
+purpose,criminal detection (IDed),1.08567,0.43613,generic surveillance,Table 6
+purpose,count people (anon),0.54011,0.56511,generic surveillance,Table 6
+purpose,jump line (IDed),2.12133,0.53749,generic surveillance,Table 6
+purpose,targeted ads (anon),2.77327,0.56614,generic surveillance,Table 6
+purpose,targeted ads (IDed),1.87295,0.5265,generic surveillance,Table 6
+purpose,sentiment ads (anon),2.03323,0.70039,generic surveillance,Table 6
+purpose,sentiment ads (IDed),2.7837,0.59923,generic surveillance,Table 6
+purpose,rate service (anon),1.92574,0.55494,generic surveillance,Table 6
+purpose,rate engagement (IDed),0.9621,0.92536,generic surveillance,Table 6
+purpose,face as ID (IDed),1.70491,0.51797,generic surveillance,Table 6
+purpose,track attendance (IDed),2.56281,0.60284,generic surveillance,Table 6
+purpose,work productivity (IDed),3.15627,0.63879,generic surveillance,Table 6
+purpose,health predictions (IDed),3.37146,0.58706,generic surveillance,Table 6
+purpose,medical predictions (IDed),1.92103,0.7824,generic surveillance,Table 6
+raw_retention,ephemeral,0.10859,0.3799,30 days,Table 6; not significant
+shared,shared,-0.09074,0.26258,not shared,Table 6; not significant

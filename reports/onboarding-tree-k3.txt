@@ -1,0 +1,523 @@
+ONBOARDING TREE (profiling, k = 3, depth 5)
+
+Q: Profile of you → maker, to fix problems
+   No:
+      Q: Device & network details → other companies, to personalize
+         No:
+            Q: Account details → maker, for security
+               No/Depends:
+                  Q: Sensor readings → other companies, to improve products
+                     No/Depends:
+                        Q: Location → other companies, to fix problems
+                           No:
+                              → [L1] preset k3-p0 (26% accepted) · 643 households · 10 follow-ups
+                           Depends/Yes:
+                              → [L2] preset k3-p0 (26% accepted) · 54 households · 10 follow-ups
+                     Yes:
+                        Q: How you use devices → maker, to send alerts
+                           No:
+                              → [L3] preset k3-p0 (26% accepted) · 150 households · 10 follow-ups
+                           Depends/Yes:
+                              → [L4] preset k3-p2 (50% accepted) · 51 households · 10 follow-ups
+               Yes:
+                  Q: Location stays home, to send alerts
+                     No/Depends:
+                        Q: Device & network details → other companies, for ads
+                           No:
+                              → [L5] preset k3-p0 (26% accepted) · 148 households · 10 follow-ups
+                           Depends/Yes:
+                              → [L6] preset k3-p2 (50% accepted) · 35 households · 10 follow-ups
+                     Yes:
+                        Q: Account details → maker, to fix problems
+                           No:
+                              → [L7] preset k3-p2 (50% accepted) · 222 households · 10 follow-ups
+                           Depends/Yes:
+                              → [L8] preset k3-p2 (50% accepted) · 164 households · 10 follow-ups
+         Depends/Yes:
+            Q: Location → maker, for security
+               No:
+                  Q: Sensor readings → other companies, to improve products
+                     No/Depends:
+                        Q: How you use devices → maker, to send alerts
+                           No:
+                              → [L9] preset k3-p0 (26% accepted) · 201 households · 10 follow-ups
+                           Depends/Yes:
+                              → [L10] preset k3-p2 (50% accepted) · 102 households · 10 follow-ups
+                     Yes:
+                        Q: Location stays home, to send alerts
+                           No/Depends:
+                              → [L11] preset k3-p2 (50% accepted) · 66 households · 10 follow-ups
+                           Yes:
+                              → [L12] preset k3-p2 (50% accepted) · 154 households · 10 follow-ups
+               Depends/Yes:
+                  Q: Video/audio → other companies, to improve products
+                     No:
+                        Q: Location → maker, to improve products
+                           No/Depends:
+                              → [L13] preset k3-p2 (50% accepted) · 465 households · 10 follow-ups
+                           Yes:
+                              → [L14] preset k3-p2 (50% accepted) · 79 households · 10 follow-ups
+                     Depends/Yes:
+                        Q: Device & network details → maker, to personalize
+                           No/Depends:
+                              → [L15] preset k3-p2 (50% accepted) · 51 households · 10 follow-ups
+                           Yes:
+                              → [L16] preset k3-p1 (78% accepted) · 107 households · 10 follow-ups
+   Depends/Yes:
+      Q: Device & network details → other companies, to personalize
+         No/Depends:
+            Q: How you use devices → maker, to send alerts
+               No:
+                  Q: Video/audio → maker, for security
+                     No:
+                        Q: How you use devices stays home, to send alerts
+                           No/Depends:
+                              → [L17] preset k3-p0 (26% accepted) · 45 households · 10 follow-ups
+                           Yes:
+                              → [L18] preset k3-p2 (50% accepted) · 55 households · 10 follow-ups
+                     Depends/Yes:
+                        Q: Sensor readings → other companies, to fix problems
+                           No/Depends:
+                              → [L19] preset k3-p2 (50% accepted) · 60 households · 10 follow-ups
+                           Yes:
+                              → [L20] preset k3-p2 (50% accepted) · 191 households · 10 follow-ups
+               Depends/Yes:
+                  Q: Location → maker, to improve products
+                     No/Depends:
+                        Q: Account details → maker, to personalize
+                           No:
+                              → [L21] preset k3-p2 (50% accepted) · 492 households · 10 follow-ups
+                           Depends/Yes:
+                              → [L22] preset k3-p1 (78% accepted) · 80 households · 10 follow-ups
+                     Yes:
+                        Q: Account details → other companies, to fix problems
+                           No:
+                              → [L23] preset k3-p2 (50% accepted) · 91 households · 10 follow-ups
+                           Depends/Yes:
+                              → [L24] preset k3-p1 (78% accepted) · 114 households · 10 follow-ups
+         Yes:
+            Q: Location → maker, to send alerts
+               No/Depends:
+                  Q: Video/audio → other companies, to improve products
+                     No:
+                        Q: Location → other companies, to personalize
+                           No:
+                              → [L25] preset k3-p2 (50% accepted) · 192 households · 10 follow-ups
+                           Depends/Yes:
+                              → [L26] preset k3-p2 (50% accepted) · 106 households · 10 follow-ups
+                     Depends/Yes:
+                        Q: Account details → other companies, to fix problems
+                           No:
+                              → [L27] preset k3-p2 (50% accepted) · 28 households · 10 follow-ups
+                           Depends/Yes:
+                              → [L28] preset k3-p1 (78% accepted) · 78 households · 10 follow-ups
+               Yes:
+                  Q: Account details stays home, to personalize
+                     No:
+                        Q: How you use devices → other companies, to improve products
+                           No:
+                              → [L29] preset k3-p1 (78% accepted) · 146 households · 10 follow-ups
+                           Depends/Yes:
+                              → [L30] preset k3-p1 (78% accepted) · 111 households · 10 follow-ups
+                     Depends/Yes:
+                        Q: Sensor readings → other companies, to improve products
+                           No:
+                              → [L31] preset k3-p1 (78% accepted) · 77 households · 10 follow-ups
+                           Depends/Yes:
+                              → [L32] preset k3-p1 (78% accepted) · 442 households · 10 follow-ups
+
+PRESETS
+  k3-p0: 1597 households, accepts 26% · Strict · no diagnosticsAndMaintenance, legalCompliance · OK with coreFunctionality
+  k3-p1: 1265 households, accepts 78% · Relaxed · OK with diagnosticsAndMaintenance, communicationsAndNotifications
+  k3-p2: 2138 households, accepts 50% · Careful · no advertisingAndMarketing, vendorContext · OK with householdContext, sensorData
+
+FOLLOW-UP QUESTIONS PER LEAF (asked in this order; 15 − profiling questions)
+
+[L1] → k3-p0 · 643 households
+    1. Device & network details → other companies, to fix problems
+    2. Sensor readings → maker, to fix problems
+    3. Profile of you → maker, so it works
+    4. Sensor readings → other companies, to fix problems
+    5. Location stays home, to send alerts
+    6. Account details stays home, to send alerts
+    7. Video/audio stays home, to send alerts
+    8. How you use devices → maker, so it works
+    9. Profile of you stays home, to send alerts
+   10. Device & network details → maker, to send alerts
+
+[L2] → k3-p0 · 54 households
+    1. Sensor readings → other companies, to fix problems
+    2. How you use devices stays home, to personalize
+    3. Device & network details → other companies, to fix problems
+    4. Sensor readings → maker, to improve products
+    5. Sensor readings → maker, to fix problems
+    6. Device & network details → maker, to improve products
+    7. Profile of you → maker, so it works
+    8. Sensor readings → maker, to personalize
+    9. Video/audio → maker, for security
+   10. How you use devices → maker, for security
+
+[L3] → k3-p0 · 150 households
+    1. Sensor readings → other companies, to fix problems
+    2. Device & network details → other companies, to fix problems
+    3. How you use devices stays home, to personalize
+    4. Sensor readings → maker, to fix problems
+    5. Profile of you → maker, so it works
+    6. Sensor readings → maker, to improve products
+    7. Device & network details → maker, to improve products
+    8. Location stays home, to send alerts
+    9. Video/audio stays home, to send alerts
+   10. Sensor readings → maker, to personalize
+
+[L4] → k3-p2 · 51 households
+    1. Device & network details → maker, to improve products
+    2. Sensor readings → maker, to improve products
+    3. Video/audio → maker, for security
+    4. Sensor readings → maker, to personalize
+    5. How you use devices stays home, to personalize
+    6. How you use devices → maker, for security
+    7. Device & network details → other companies, to improve products
+    8. Profile of you → maker, for security
+    9. Location stays home, to personalize
+   10. Device & network details → maker, to personalize
+
+[L5] → k3-p0 · 148 households
+    1. Device & network details → other companies, to fix problems
+    2. Sensor readings → other companies, to fix problems
+    3. Sensor readings → maker, to fix problems
+    4. Profile of you → maker, so it works
+    5. How you use devices stays home, to personalize
+    6. Account details stays home, to send alerts
+    7. Video/audio stays home, to send alerts
+    8. Profile of you stays home, to send alerts
+    9. How you use devices → maker, so it works
+   10. Device & network details → maker, to send alerts
+
+[L6] → k3-p2 · 35 households
+    1. Device & network details → maker, to improve products
+    2. Sensor readings → maker, to improve products
+    3. Video/audio → maker, for security
+    4. How you use devices stays home, to personalize
+    5. Sensor readings → maker, to personalize
+    6. How you use devices → maker, for security
+    7. Sensor readings → other companies, to improve products
+    8. Device & network details → other companies, to improve products
+    9. Profile of you → maker, for security
+   10. Location stays home, to personalize
+
+[L7] → k3-p2 · 222 households
+    1. How you use devices stays home, to personalize
+    2. Sensor readings → maker, to improve products
+    3. Device & network details → maker, to improve products
+    4. Video/audio → maker, for security
+    5. Sensor readings → maker, to personalize
+    6. How you use devices → maker, for security
+    7. Sensor readings → other companies, to improve products
+    8. Sensor readings → other companies, to fix problems
+    9. Device & network details → other companies, to improve products
+   10. Device & network details → other companies, to fix problems
+
+[L8] → k3-p2 · 164 households
+    1. Sensor readings → other companies, to improve products
+    2. Profile of you → maker, for security
+    3. Device & network details → other companies, to improve products
+    4. Sensor readings → maker, to personalize
+    5. How you use devices → maker, for security
+    6. Device & network details → maker, to personalize
+    7. Location → maker, for security
+    8. Video/audio → maker, for security
+    9. Sensor readings → other companies, to personalize
+   10. Location stays home, to personalize
+
+[L9] → k3-p0 · 201 households
+    1. Sensor readings → other companies, to fix problems
+    2. Device & network details → other companies, to fix problems
+    3. Account details → maker, for security
+    4. Sensor readings → maker, to fix problems
+    5. Profile of you → maker, so it works
+    6. How you use devices stays home, to personalize
+    7. Location stays home, to send alerts
+    8. Sensor readings → maker, to improve products
+    9. Video/audio stays home, to send alerts
+   10. Account details stays home, to send alerts
+
+[L10] → k3-p2 · 102 households
+    1. Sensor readings → maker, to improve products
+    2. How you use devices stays home, to personalize
+    3. Device & network details → maker, to improve products
+    4. Video/audio → maker, for security
+    5. Sensor readings → maker, to personalize
+    6. How you use devices → maker, for security
+    7. Account details → maker, for security
+    8. Device & network details → other companies, to improve products
+    9. Profile of you → maker, for security
+   10. Location stays home, to personalize
+
+[L11] → k3-p2 · 66 households
+    1. How you use devices stays home, to personalize
+    2. Sensor readings → maker, to improve products
+    3. Account details → maker, for security
+    4. Device & network details → maker, to improve products
+    5. Video/audio → maker, for security
+    6. Sensor readings → maker, to personalize
+    7. How you use devices → maker, for security
+    8. Sensor readings → other companies, to fix problems
+    9. Device & network details → other companies, to improve products
+   10. Device & network details → other companies, to fix problems
+
+[L12] → k3-p2 · 154 households
+    1. Sensor readings → maker, to personalize
+    2. How you use devices → maker, for security
+    3. Profile of you → maker, for security
+    4. Device & network details → other companies, to improve products
+    5. Video/audio → maker, for security
+    6. Device & network details → maker, to personalize
+    7. Device & network details → maker, to improve products
+    8. Sensor readings → other companies, to personalize
+    9. Location stays home, to personalize
+   10. Sensor readings → maker, to improve products
+
+[L13] → k3-p2 · 465 households
+    1. Sensor readings → maker, to personalize
+    2. Sensor readings → other companies, to improve products
+    3. How you use devices → maker, for security
+    4. Video/audio → maker, for security
+    5. Device & network details → other companies, to improve products
+    6. Profile of you → maker, for security
+    7. Device & network details → maker, to improve products
+    8. Device & network details → maker, to personalize
+    9. Location stays home, to personalize
+   10. Sensor readings → other companies, to personalize
+
+[L14] → k3-p2 · 79 households
+    1. Device & network details → maker, for ads
+    2. How you use devices → other companies, to fix problems
+    3. Location → maker, to fix problems
+    4. Video/audio → maker, to send alerts
+    5. Account details stays home, to personalize
+    6. Account details → maker, to fix problems
+    7. Location → maker, to send alerts
+    8. Account details → maker, to send alerts
+    9. Profile of you → maker, to send alerts
+   10. Device & network details → other companies, for ads
+
+[L15] → k3-p2 · 51 households
+    1. How you use devices → maker, to fix problems
+    2. Profile of you stays home, to personalize
+    3. How you use devices → maker, to send alerts
+    4. Account details → maker, to send alerts
+    5. Profile of you → maker, to send alerts
+    6. Location stays home, to personalize
+    7. Sensor readings → other companies, to personalize
+    8. Location → maker, to send alerts
+    9. Account details → maker, to fix problems
+   10. Video/audio → maker, to send alerts
+
+[L16] → k3-p1 · 107 households
+    1. Device & network details → other companies, for ads
+    2. Profile of you → other companies, to fix problems
+    3. Sensor readings → maker, for ads
+    4. Account details stays home, to personalize
+    5. Account details → other companies, to fix problems
+    6. How you use devices → other companies, to fix problems
+    7. Location → other companies, to fix problems
+    8. Location → maker, to fix problems
+    9. Device & network details → maker, for ads
+   10. How you use devices → maker, to personalize
+
+[L17] → k3-p0 · 45 households
+    1. Device & network details → other companies, to fix problems
+    2. Sensor readings → maker, to fix problems
+    3. Profile of you → maker, so it works
+    4. Sensor readings → other companies, to fix problems
+    5. Location stays home, to send alerts
+    6. Account details stays home, to send alerts
+    7. Video/audio stays home, to send alerts
+    8. Account details → maker, for security
+    9. How you use devices → maker, so it works
+   10. Profile of you stays home, to send alerts
+
+[L18] → k3-p2 · 55 households
+    1. Account details → maker, for security
+    2. How you use devices stays home, to personalize
+    3. Sensor readings → other companies, to fix problems
+    4. Sensor readings → maker, to improve products
+    5. Device & network details → maker, to improve products
+    6. Device & network details → other companies, to fix problems
+    7. Sensor readings → maker, to personalize
+    8. Sensor readings → other companies, to improve products
+    9. How you use devices → maker, for security
+   10. Sensor readings → maker, to fix problems
+
+[L19] → k3-p2 · 60 households
+    1. Account details → maker, for security
+    2. How you use devices stays home, to personalize
+    3. Sensor readings → maker, to improve products
+    4. Device & network details → other companies, to fix problems
+    5. Device & network details → maker, to improve products
+    6. Sensor readings → maker, to personalize
+    7. Sensor readings → maker, to fix problems
+    8. Sensor readings → other companies, to improve products
+    9. How you use devices → maker, for security
+   10. Profile of you → maker, so it works
+
+[L20] → k3-p2 · 191 households
+    1. Sensor readings → maker, to personalize
+    2. How you use devices → maker, for security
+    3. Sensor readings → other companies, to improve products
+    4. Device & network details → other companies, to improve products
+    5. Profile of you → maker, for security
+    6. Device & network details → maker, to improve products
+    7. Device & network details → maker, to personalize
+    8. Location stays home, to personalize
+    9. Location → maker, for security
+   10. Sensor readings → other companies, to personalize
+
+[L21] → k3-p2 · 492 households
+    1. Account details → maker, to send alerts
+    2. Profile of you → maker, to send alerts
+    3. How you use devices → maker, to fix problems
+    4. Profile of you stays home, to personalize
+    5. Location → maker, to send alerts
+    6. Account details → maker, to fix problems
+    7. Video/audio → maker, to send alerts
+    8. Sensor readings → other companies, to personalize
+    9. Location stays home, to personalize
+   10. Location → maker, for security
+
+[L22] → k3-p1 · 80 households
+    1. Device & network details → other companies, for ads
+    2. Account details stays home, to personalize
+    3. Profile of you → other companies, to fix problems
+    4. Sensor readings → maker, for ads
+    5. Account details → other companies, to fix problems
+    6. How you use devices → other companies, to fix problems
+    7. Location → maker, to fix problems
+    8. Location → other companies, to fix problems
+    9. Device & network details → maker, for ads
+   10. How you use devices → maker, to personalize
+
+[L23] → k3-p2 · 91 households
+    1. Device & network details → maker, for ads
+    2. Video/audio → maker, to send alerts
+    3. How you use devices → other companies, to fix problems
+    4. Location → maker, to fix problems
+    5. Account details → maker, to fix problems
+    6. Account details stays home, to personalize
+    7. Location → maker, to send alerts
+    8. Profile of you → maker, to send alerts
+    9. Account details → maker, to send alerts
+   10. How you use devices → maker, to fix problems
+
+[L24] → k3-p1 · 114 households
+    1. How you use devices → maker, to personalize
+    2. Location → other companies, to fix problems
+    3. Video/audio → maker, to fix problems
+    4. Sensor readings → maker, for ads
+    5. Sensor readings → other companies, for ads
+    6. Video/audio stays home, to personalize
+    7. Device & network details → other companies, for ads
+    8. Profile of you → other companies, to fix problems
+    9. Account details → maker, to improve products
+   10. Account details stays home, to personalize
+
+[L25] → k3-p2 · 192 households
+    1. Account details → maker, to send alerts
+    2. Profile of you → maker, to send alerts
+    3. How you use devices → maker, to fix problems
+    4. Profile of you stays home, to personalize
+    5. How you use devices → maker, to send alerts
+    6. Account details → maker, to fix problems
+    7. Video/audio → maker, to send alerts
+    8. Sensor readings → other companies, to personalize
+    9. Location stays home, to personalize
+   10. Location → maker, for security
+
+[L26] → k3-p2 · 106 households
+    1. Account details stays home, to personalize
+    2. Location → maker, to fix problems
+    3. How you use devices → other companies, to fix problems
+    4. Device & network details → maker, for ads
+    5. Device & network details → other companies, for ads
+    6. Sensor readings → maker, for ads
+    7. Profile of you → other companies, to fix problems
+    8. Account details → other companies, to fix problems
+    9. Video/audio → maker, to send alerts
+   10. Location → other companies, to fix problems
+
+[L27] → k3-p2 · 28 households
+    1. Video/audio → maker, to send alerts
+    2. Device & network details → maker, for ads
+    3. How you use devices → other companies, to fix problems
+    4. Account details → maker, to fix problems
+    5. Location → maker, to fix problems
+    6. Account details stays home, to personalize
+    7. Profile of you → maker, to send alerts
+    8. Account details → maker, to send alerts
+    9. How you use devices → maker, to fix problems
+   10. Profile of you stays home, to personalize
+
+[L28] → k3-p1 · 78 households
+    1. How you use devices → maker, to personalize
+    2. Video/audio → maker, to fix problems
+    3. Location → other companies, to fix problems
+    4. Video/audio stays home, to personalize
+    5. Sensor readings → other companies, for ads
+    6. Sensor readings → maker, for ads
+    7. Account details → maker, to improve products
+    8. Device & network details → other companies, for ads
+    9. Location → maker, to improve products
+   10. Profile of you → other companies, to fix problems
+
+[L29] → k3-p1 · 146 households
+    1. How you use devices → other companies, to fix problems
+    2. Device & network details → maker, for ads
+    3. Location → maker, to fix problems
+    4. Video/audio → maker, to send alerts
+    5. Device & network details → other companies, for ads
+    6. Account details → maker, to fix problems
+    7. Sensor readings → maker, for ads
+    8. Profile of you → other companies, to fix problems
+    9. Account details → other companies, to fix problems
+   10. Account details → maker, to send alerts
+
+[L30] → k3-p1 · 111 households
+    1. Video/audio → maker, to fix problems
+    2. Video/audio stays home, to personalize
+    3. Sensor readings → other companies, for ads
+    4. Account details → maker, to improve products
+    5. How you use devices → maker, to personalize
+    6. Location → maker, to improve products
+    7. Location → other companies, to fix problems
+    8. Sensor readings → maker, for ads
+    9. Account details → other companies, to fix problems
+   10. Location → maker, to personalize
+
+[L31] → k3-p1 · 77 households
+    1. Sensor readings → maker, for ads
+    2. Account details → other companies, to fix problems
+    3. Profile of you → other companies, to fix problems
+    4. Device & network details → other companies, for ads
+    5. Location → other companies, to fix problems
+    6. How you use devices → maker, to personalize
+    7. Video/audio → maker, to fix problems
+    8. Sensor readings → other companies, for ads
+    9. How you use devices → other companies, to fix problems
+   10. Video/audio stays home, to personalize
+
+[L32] → k3-p1 · 442 households
+    1. Video/audio stays home, to personalize
+    2. Sensor readings → other companies, for ads
+    3. Account details → maker, to improve products
+    4. Location → maker, to improve products
+    5. Video/audio → maker, to fix problems
+    6. How you use devices → maker, to personalize
+    7. Location → maker, to personalize
+    8. Location → other companies, to fix problems
+    9. Sensor readings → maker, for ads
+   10. How you use devices → maker, to improve products
+
+FULL WORDING, examples:
+ - A device sends a profile of you (for example, your preferences and the daily routines a device has learned) to the company that made it, to fix problems and update the device (for example, sending error reports). Would you allow this?
+ - A device's maker passes device and network details (for example, the device's settings, your Wi-Fi network and IP address) on to other companies, such as advertising or analytics firms, to fix problems and update the device (for example, sending error reports). Would you allow this?
+ - A device sends sensor readings (for example, the temperature, motion, or whether someone is home) to the company that made it, to fix problems and update the device (for example, sending error reports). Would you allow this?

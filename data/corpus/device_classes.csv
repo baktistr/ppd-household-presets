@@ -1,0 +1,8 @@
+device_class,label,app_categories,corpus_devices,apthorpe_senders,naeini_device_types,fit_cells,fit_source
+camera,Camera,camera,reolink-e1-zoom,security_camera,camera|facial recognition system,11,corpus
+lock_entry,Lock & entry,smart_lock,level-lock,door_lock,fingerprint scanner,12,corpus
+thermostat_sensors,Thermostat & sensors,thermostat,aqara-w200,thermostat|power_meter,temperature sensor|presence sensor,11,corpus
+voice_assistant,Voice assistant & speaker,,,personal_assistant,,4,assumed
+tv_media,TV & media,smart_tv,lg-oled65c6pua-c6,,,7,corpus
+light_plug,Light & plug,light,,,,4,assumed
+appliance,Appliance,,,refrigerator,,3,assumed

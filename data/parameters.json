@@ -1,0 +1,798 @@
+{
+  "kappa": {
+    "value": 1.4,
+    "grade": "C",
+    "sources": "score-to-logit conversion"
+  },
+  "purpose": {
+    "ppd:coreFunctionality": {
+      "value": 0.0,
+      "grade": "B",
+      "sources": "naeini2017"
+    },
+    "ppd:personalization": {
+      "value": -2.25,
+      "grade": "D",
+      "sources": "assumed"
+    },
+    "ppd:communicationsAndNotifications": {
+      "value": -1.05,
+      "grade": "D",
+      "sources": "assumed"
+    },
+    "ppd:security": {
+      "value": -0.758,
+      "grade": "B",
+      "sources": "apthorpe2018+zhang2021"
+    },
+    "ppd:diagnosticsAndMaintenance": {
+      "value": -1.324,
+      "grade": "A",
+      "sources": "apthorpe2018"
+    },
+    "ppd:analyticsAndImprovement": {
+      "value": -1.6865,
+      "grade": "B",
+      "sources": "apthorpe2018+zhang2021"
+    },
+    "ppd:legalCompliance": {
+      "value": -1.35,
+      "grade": "D",
+      "sources": "assumed"
+    },
+    "ppd:advertisingAndMarketing": {
+      "value": -2.85,
+      "grade": "A",
+      "sources": "baseline"
+    }
+  },
+  "data_type": {
+    "ppd:identifierData": {
+      "value": -0.01,
+      "grade": "B",
+      "sources": "naeini2017"
+    },
+    "ppd:profileData": {
+      "value": -0.01,
+      "grade": "D",
+      "sources": "= identifierData"
+    },
+    "ppd:sensorData": {
+      "value": 1.4554,
+      "grade": "A",
+      "sources": "apthorpe2018+naeini2017"
+    },
+    "ppd:contentData": {
+      "value": -0.3086,
+      "grade": "A",
+      "sources": "apthorpe2018+naeini2017"
+    },
+    "ppd:locationData": {
+      "value": 0.0,
+      "grade": "A",
+      "sources": "baseline"
+    },
+    "ppd:deviceAndNetworkData": {
+      "value": 1.4554,
+      "grade": "D",
+      "sources": "= sensorData"
+    },
+    "ppd:usageData": {
+      "value": 0.0717,
+      "grade": "A",
+      "sources": "apthorpe2018"
+    }
+  },
+  "handling_context": {
+    "ppd:householdContext": {
+      "value": 0.0,
+      "grade": "A",
+      "sources": "baseline"
+    },
+    "ppd:vendorContext": {
+      "value": -1.442,
+      "grade": "A",
+      "sources": "apthorpe2018"
+    },
+    "ppd:thirdPartyContext": {
+      "value": -1.7255,
+      "grade": "B",
+      "sources": "apthorpe2018"
+    },
+    "ppd:publicAudience": {
+      "value": -1.568,
+      "grade": "B",
+      "sources": "apthorpe2018"
+    }
+  },
+  "action_weight": {
+    "ppd:collection": {
+      "value": 1.0,
+      "grade": "D",
+      "sources": "assumed"
+    },
+    "ppd:use": {
+      "value": 0.6,
+      "grade": "D",
+      "sources": "assumed"
+    },
+    "ppd:transfer": {
+      "value": 1.0,
+      "grade": "D",
+      "sources": "assumed"
+    },
+    "ppd:inference": {
+      "value": 1.0,
+      "grade": "D",
+      "sources": "assumed"
+    }
+  },
+  "action": {
+    "ppd:collection": {
+      "value": 0.0,
+      "grade": "D",
+      "sources": "baseline"
+    },
+    "ppd:use": {
+      "value": 0.0,
+      "grade": "D",
+      "sources": "baseline"
+    },
+    "ppd:transfer": {
+      "value": 0.0,
+      "grade": "D",
+      "sources": "baseline"
+    },
+    "ppd:inference": {
+      "value": 0.0444,
+      "grade": "B",
+      "sources": "apthorpe2018"
+    }
+  },
+  "source": {
+    "ppd:userProvided": {
+      "value": 0.1,
+      "grade": "D",
+      "sources": "v2, sign flipped"
+    },
+    "ppd:participantObserved": {
+      "value": -0.15,
+      "grade": "D",
+      "sources": "v2, sign flipped"
+    },
+    "ppd:participantGenerated": {
+      "value": -0.05,
+      "grade": "D",
+      "sources": "v2, sign flipped"
+    },
+    "ppd:householdProvided": {
+      "value": 0.0,
+      "grade": "D",
+      "sources": "v2, sign flipped"
+    },
+    "ppd:vendorProvided": {
+      "value": 0.05,
+      "grade": "D",
+      "sources": "v2, sign flipped"
+    },
+    "ppd:thirdPartyProvided": {
+      "value": -0.2,
+      "grade": "D",
+      "sources": "v2, sign flipped"
+    },
+    "ppd:derivedFromPriorData": {
+      "value": -0.25,
+      "grade": "D",
+      "sources": "v2, sign flipped"
+    }
+  },
+  "device_fit": {
+    "value": 0.238,
+    "grade": "A",
+    "sources": "apthorpe2018 §5.7"
+  },
+  "ownership": {
+    "value": 0.119,
+    "grade": "B",
+    "sources": "apthorpe2018 §4.3"
+  },
+  "ephemeral_gain": {
+    "value": 0.1289,
+    "grade": "B",
+    "sources": "apthorpe2018+zhang2021"
+  },
+  "in_home_share": {
+    "value": 0.3,
+    "grade": "D",
+    "sources": "assumed"
+  },
+  "on_device_share": {
+    "value": 0.4,
+    "grade": "D",
+    "sources": "assumed"
+  },
+  "devices_step": {
+    "value": 0.1,
+    "grade": "C",
+    "sources": "smullen2020 (direction)"
+  },
+  "age_step": {
+    "value": -0.05,
+    "grade": "D",
+    "sources": "assumed"
+  },
+  "children_content_location": {
+    "value": -0.3,
+    "grade": "D",
+    "sources": "assumed"
+  },
+  "concern_weight": {
+    "value": -0.6,
+    "grade": "C",
+    "sources": "smullen2020 (weak)"
+  },
+  "random_sd": {
+    "intercept": {
+      "value": 0.6,
+      "grade": "D",
+      "sources": "below the purpose spreads (S20, N17)"
+    },
+    "purpose": {
+      "ppd:coreFunctionality": {
+        "value": 0.4,
+        "grade": "D",
+        "sources": "smullen2020 (order)"
+      },
+      "ppd:personalization": {
+        "value": 1.0,
+        "grade": "D",
+        "sources": "smullen2020 (order)"
+      },
+      "ppd:communicationsAndNotifications": {
+        "value": 0.6,
+        "grade": "D",
+        "sources": "smullen2020 (order)"
+      },
+      "ppd:security": {
+        "value": 0.5,
+        "grade": "D",
+        "sources": "smullen2020 (order)"
+      },
+      "ppd:diagnosticsAndMaintenance": {
+        "value": 0.7,
+        "grade": "D",
+        "sources": "smullen2020 (order)"
+      },
+      "ppd:analyticsAndImprovement": {
+        "value": 1.0,
+        "grade": "D",
+        "sources": "smullen2020 (order)"
+      },
+      "ppd:legalCompliance": {
+        "value": 0.7,
+        "grade": "D",
+        "sources": "smullen2020 (order)"
+      },
+      "ppd:advertisingAndMarketing": {
+        "value": 1.2,
+        "grade": "D",
+        "sources": "smullen2020 (order)"
+      }
+    },
+    "data_type": {
+      "value": 0.6,
+      "grade": "D",
+      "sources": "assumed"
+    },
+    "handling_context": {
+      "ppd:householdContext": {
+        "value": 0.0,
+        "grade": "D",
+        "sources": "assumed"
+      },
+      "ppd:vendorContext": {
+        "value": 0.8,
+        "grade": "D",
+        "sources": "assumed"
+      },
+      "ppd:thirdPartyContext": {
+        "value": 0.7,
+        "grade": "D",
+        "sources": "assumed"
+      },
+      "ppd:publicAudience": {
+        "value": 0.6,
+        "grade": "D",
+        "sources": "assumed"
+      }
+    },
+    "context_correlation": {
+      "value": 0.5,
+      "grade": "D",
+      "sources": "assumed"
+    },
+    "purpose_correlation": {
+      "value": 0.3,
+      "grade": "D",
+      "sources": "assumed"
+    },
+    "data_type_x_purpose": {
+      "value": 0.4,
+      "grade": "D",
+      "sources": "assumed"
+    },
+    "ephemeral": {
+      "value": 0.3,
+      "grade": "D",
+      "sources": "assumed"
+    }
+  },
+  "noise": {
+    "tau_start": {
+      "value": 1.7,
+      "grade": "C",
+      "sources": "logistic ≈ probit × 1.7; calibrated in Part B"
+    },
+    "cell_share": {
+      "value": 0.5,
+      "grade": "D",
+      "sources": "assumed"
+    }
+  },
+  "data_type_x_purpose_fit": {
+    "identifierData|coreFunctionality": {
+      "value": 0.5,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "identifierData|personalization": {
+      "value": 0.0,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "identifierData|communicationsAndNotifications": {
+      "value": 0.0,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "identifierData|security": {
+      "value": 0.5,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "identifierData|diagnosticsAndMaintenance": {
+      "value": 0.0,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "identifierData|analyticsAndImprovement": {
+      "value": 0.0,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "identifierData|legalCompliance": {
+      "value": 0.5,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "identifierData|advertisingAndMarketing": {
+      "value": -0.5,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "profileData|coreFunctionality": {
+      "value": 0.0,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "profileData|personalization": {
+      "value": 0.5,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "profileData|communicationsAndNotifications": {
+      "value": 0.0,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "profileData|security": {
+      "value": 0.0,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "profileData|diagnosticsAndMaintenance": {
+      "value": 0.0,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "profileData|analyticsAndImprovement": {
+      "value": 0.0,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "profileData|legalCompliance": {
+      "value": 0.0,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "profileData|advertisingAndMarketing": {
+      "value": 0.0,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "sensorData|coreFunctionality": {
+      "value": 0.5,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "sensorData|personalization": {
+      "value": 0.5,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "sensorData|communicationsAndNotifications": {
+      "value": 0.5,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "sensorData|security": {
+      "value": 0.5,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "sensorData|diagnosticsAndMaintenance": {
+      "value": 0.0,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "sensorData|analyticsAndImprovement": {
+      "value": 0.0,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "sensorData|legalCompliance": {
+      "value": 0.0,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "sensorData|advertisingAndMarketing": {
+      "value": 0.0,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "contentData|coreFunctionality": {
+      "value": 0.5,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "contentData|personalization": {
+      "value": 0.0,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "contentData|communicationsAndNotifications": {
+      "value": 0.5,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "contentData|security": {
+      "value": 0.5,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "contentData|diagnosticsAndMaintenance": {
+      "value": 0.0,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "contentData|analyticsAndImprovement": {
+      "value": 0.0,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "contentData|legalCompliance": {
+      "value": 0.0,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "contentData|advertisingAndMarketing": {
+      "value": -0.5,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "locationData|coreFunctionality": {
+      "value": 0.5,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "locationData|personalization": {
+      "value": 0.5,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "locationData|communicationsAndNotifications": {
+      "value": 0.0,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "locationData|security": {
+      "value": 0.0,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "locationData|diagnosticsAndMaintenance": {
+      "value": 0.0,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "locationData|analyticsAndImprovement": {
+      "value": 0.0,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "locationData|legalCompliance": {
+      "value": 0.0,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "locationData|advertisingAndMarketing": {
+      "value": -0.5,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "deviceAndNetworkData|coreFunctionality": {
+      "value": 0.5,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "deviceAndNetworkData|personalization": {
+      "value": 0.0,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "deviceAndNetworkData|communicationsAndNotifications": {
+      "value": 0.0,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "deviceAndNetworkData|security": {
+      "value": 0.5,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "deviceAndNetworkData|diagnosticsAndMaintenance": {
+      "value": 0.5,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "deviceAndNetworkData|analyticsAndImprovement": {
+      "value": 0.0,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "deviceAndNetworkData|legalCompliance": {
+      "value": 0.0,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "deviceAndNetworkData|advertisingAndMarketing": {
+      "value": 0.0,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "usageData|coreFunctionality": {
+      "value": 0.0,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "usageData|personalization": {
+      "value": 0.5,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "usageData|communicationsAndNotifications": {
+      "value": 0.0,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "usageData|security": {
+      "value": 0.0,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "usageData|diagnosticsAndMaintenance": {
+      "value": 0.5,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "usageData|analyticsAndImprovement": {
+      "value": 0.0,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "usageData|legalCompliance": {
+      "value": 0.0,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    },
+    "usageData|advertisingAndMarketing": {
+      "value": 0.0,
+      "grade": "D",
+      "sources": "fit (A18 §5.7; contextual integrity)"
+    }
+  },
+  "concern_patterns": {
+    "recordings": {
+      "cells": [
+        "contentData|personalization",
+        "contentData|communicationsAndNotifications",
+        "contentData|diagnosticsAndMaintenance",
+        "contentData|analyticsAndImprovement",
+        "contentData|legalCompliance",
+        "contentData|advertisingAndMarketing"
+      ],
+      "primary_share": {
+        "value": 0.15,
+        "grade": "D",
+        "sources": "assumed"
+      }
+    },
+    "whereabouts": {
+      "cells": [
+        "locationData|personalization",
+        "locationData|analyticsAndImprovement",
+        "locationData|advertisingAndMarketing",
+        "sensorData|personalization",
+        "sensorData|analyticsAndImprovement",
+        "sensorData|advertisingAndMarketing"
+      ],
+      "primary_share": {
+        "value": 0.15,
+        "grade": "D",
+        "sources": "assumed"
+      }
+    },
+    "identity": {
+      "cells": [
+        "identifierData|personalization",
+        "identifierData|analyticsAndImprovement",
+        "identifierData|advertisingAndMarketing",
+        "identifierData|legalCompliance",
+        "profileData|personalization",
+        "profileData|analyticsAndImprovement",
+        "profileData|advertisingAndMarketing",
+        "profileData|legalCompliance"
+      ],
+      "primary_share": {
+        "value": 0.15,
+        "grade": "D",
+        "sources": "assumed"
+      }
+    },
+    "habits": {
+      "cells": [
+        "usageData|personalization",
+        "usageData|analyticsAndImprovement",
+        "usageData|advertisingAndMarketing",
+        "profileData|personalization",
+        "profileData|analyticsAndImprovement",
+        "profileData|advertisingAndMarketing"
+      ],
+      "primary_share": {
+        "value": 0.15,
+        "grade": "D",
+        "sources": "assumed"
+      }
+    },
+    "telemetry": {
+      "cells": [
+        "deviceAndNetworkData|diagnosticsAndMaintenance",
+        "deviceAndNetworkData|analyticsAndImprovement",
+        "usageData|diagnosticsAndMaintenance",
+        "usageData|analyticsAndImprovement"
+      ],
+      "primary_share": {
+        "value": 0.15,
+        "grade": "D",
+        "sources": "assumed"
+      }
+    }
+  },
+  "concern_none_share": {
+    "value": 0.25,
+    "grade": "D",
+    "sources": "assumed"
+  },
+  "concern_primary_strength": {
+    "value": 1.0,
+    "grade": "D",
+    "sources": "assumed"
+  },
+  "concern_primary_strength_sd": {
+    "value": 0.25,
+    "grade": "D",
+    "sources": "assumed"
+  },
+  "concern_secondary_probability": {
+    "value": 0.3,
+    "grade": "D",
+    "sources": "assumed"
+  },
+  "concern_secondary_strength": {
+    "value": 0.4,
+    "grade": "D",
+    "sources": "assumed"
+  },
+  "concern_owner_discount": {
+    "value": 0.7,
+    "grade": "D",
+    "sources": "assumed (A18 §4.3: owners more accepting)"
+  },
+  "concern_pattern_weight": {
+    "value": 3.0,
+    "grade": "D",
+    "sources": "assumed: large enough that a concern is decisive within its combinations (week 9); then scaled by S"
+  },
+  "concern_pattern_home_share": {
+    "value": 0.3333,
+    "grade": "D",
+    "sources": "assumed"
+  },
+  "ownership_probability": {
+    "camera": {
+      "value": 0.35,
+      "grade": "D",
+      "sources": "assumed"
+    },
+    "lock_entry": {
+      "value": 0.25,
+      "grade": "D",
+      "sources": "assumed"
+    },
+    "thermostat_sensors": {
+      "value": 0.35,
+      "grade": "D",
+      "sources": "assumed"
+    },
+    "voice_assistant": {
+      "value": 0.45,
+      "grade": "D",
+      "sources": "assumed"
+    },
+    "tv_media": {
+      "value": 0.55,
+      "grade": "D",
+      "sources": "assumed"
+    },
+    "light_plug": {
+      "value": 0.55,
+      "grade": "D",
+      "sources": "assumed"
+    },
+    "appliance": {
+      "value": 0.15,
+      "grade": "D",
+      "sources": "assumed"
+    }
+  },
+  "targets": {
+    "leaving_home_accept_share": {
+      "value": 0.47,
+      "low": 0.42,
+      "high": 0.52,
+      "study": "naeini2017"
+    },
+    "item_majority_accuracy": {
+      "value": 0.78,
+      "low": 0.76,
+      "high": 0.8,
+      "study": "naeini2017"
+    },
+    "retest_change": {
+      "value": 0.051,
+      "low": 0.03,
+      "high": 0.08,
+      "study": "liu2016"
+    }
+  }
+}
