@@ -59,14 +59,14 @@ these households are; re-derive it (notebooks 03–05, same rules) once real ans
 
 Every question is a **concrete situation with examples**, e.g. the first one: *"A device sends how you use your
 devices (for example, when you switch the lights on, or what you watch on TV) to the company that made it, to send you
-alerts and messages (for example, a doorbell or smoke alarm notification). Would you allow this?"* (No / It depends /
+alerts and messages (for example, a doorbell or smoke alarm notification). Would you allow this?"* (No / Not sure /
 Yes). Each stores an example per device class, so the app can show one from a device the household owns. The picture
 shortens situations to *data → where it goes, why*. Children are never asked about (week 9: future work).
 
 `export/onboarding.json` holds everything the app needs: the splash text, the tree, each leaf's preset with its ordered
 follow-ups and budget (15 minus the stage 1 questions), every question's full wording, and how answers become rules:
 a *yes* or *no* splits the preset rule covering that situation and adds the household's answer as its own rule (rules
-never overlap, so exactly one decides each flow); *It depends* keeps the preset. Rerunning the questionnaire **starts
+never overlap, so exactly one decides each flow); *Not sure* keeps the preset (the three answers follow Liu 2019, ch. 6). Rerunning the questionnaire **starts
 over**: the rules are rebuilt from the new answers, replacing manual edits after a warning.
 
 ## The matrix
