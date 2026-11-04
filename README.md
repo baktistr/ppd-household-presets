@@ -172,7 +172,7 @@ data/corpus/flows.csv                     88 flows from 4 researched devices (52
 data/sample/                              first 200 households, committed
 export/presets.json, export/onboarding.json   what the app uses (notebook 07), committed
 export/onboarding-tree.svg                  the onboarding tree as a picture (notebook 07), committed
-reports/                                  the tree, follow-ups per leaf and a flowchart, for reading (notebook 05 and by hand)
+reports/                                  the tree, follow-ups per leaf and a flowchart, for reading (notebook 05 and by hand); situation-questions.md, every question as the app shows it, for review
 pyproject.toml, uv.lock, Makefile         environment
 ```
 
