@@ -15,9 +15,10 @@ whose compiler turns them into PPD policies for each device. The full plan is in
 
 ## Current results (synthetic data)
 
-A household answers **at most 15 questions**: up to 6 concrete situations place it in one of **4 presets** (stage 1, the
-onboarding tree), and the rest go to follow-ups on the situations its preset is least sure about (stage 2, the "help me
-refine my settings" wizard). Its answers are then written into the preset's rules, so every household ends with its own
+A household answers **at most 15 questions** at setup: up to 6 concrete situations place it in one of **4 presets** (stage
+1, the onboarding tree), and the rest go to follow-ups on the situations its preset is least sure about (stage 2).
+Afterwards, "help me refine my settings" has **no cap** (Nov 2 meeting): each leaf ranks all 105 situations, most unsure
+first, and the household answers as many as it likes. Its answers are then written into the preset's rules, so every household ends with its own
 policy (43 rules on average). Cross-validated match with households' own decisions:
 
 | | All 6,272 flows | Real-device flows |
@@ -25,6 +26,14 @@ policy (43 rules on average). Cross-validated match with households' own decisio
 | One preset for everyone | 73.9% | 87.9% |
 | After stage 1 (5.9 situations on average) | 78.6% | 89.1% |
 | **After stage 2 (15 questions in total)** | **80.3%** | **90.0%** |
+| Refining to a good picture (every situation left under 0.3 unsure; 43 follow-ups on average) | 82.9% | 93.1% |
+| Refining every situation (99 follow-ups on average) | 83.4% | 93.9% |
+
+**Refining past the cap** (notebook 05, "Past the cap"): every extra answer still helps, but less and less. The app says
+there is a good picture once every situation left is less than `stop_unsure` = 0.3 unsure (households like this one at
+least 85/15 on it), within half a point of answering everything; the household can still go on. Each answer decides
+one situation (28 flows), so even all 105 settle about 2,900 of the 6,272 flows; the rest keep the preset's decision
+unless the person writes a rule.
 
 The 4 presets (`export/presets.json`, 30 rules each), from the strictest to the most open. They are **internal**:
 households never see or choose a preset (week 9 with CableLabs: a list invites self-perception bias); the questionnaire
