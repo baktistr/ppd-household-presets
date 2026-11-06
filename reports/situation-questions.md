@@ -1,15 +1,99 @@
-# Situation questions: review list
+# Onboarding questions: review list
 
-All 105 situation questions, as the app shows them. Generated on 2026-11-04 from `export/onboarding.json` (v3.1.0) with the app's own wording code (`shared/onboarding.ts`, `questionText` and `promptFor` in ppd-preference-app), so the text below is exactly what a household reads.
+The 9 other candidate questions from notebook 02 first, then all 105 situation questions as the app shows them. Generated on 2026-11-06 from `export/onboarding.json` (v3.1.0) with the app's own wording code (`shared/onboarding.ts`, `questionText` and `promptFor` in ppd-preference-app), so the text below is exactly what a household reads.
 
-- **37** are in the onboarding decision tree, **31** more are onboarding follow-ups, and **37** are asked only in "Help me refine my settings".
+- Of the situation questions, **37** are in the onboarding decision tree, **31** more are onboarding follow-ups, and **37** are asked only in "Help me refine my settings".
 - Every question has the options **No / Not sure / Yes**. Yes writes an allow rule and No a never rule for the situation's 28 flows (4 actions × 7 sources); Not sure keeps the preset.
 - **Question** is the sentence from notebook 02's templates (`WHERE_TEXT`, `DATA_TEXT`, `PURPOSE_TEXT`) with its "(for example, …)" parts removed. **Example** is the line under it, for a household that owns none of the devices with their own example. **If they own** lists the example worded for a device they own.
 - To review: tick **OK** or write what is wrong under **Notes**. Fixes to the question go in notebook 02 (`WHERE_TEXT`, `DATA_TEXT`, `PURPOSE_TEXT`, `EXAMPLE_BY_CLASS`); fixes to the example line go in the app (`ONE_EXAMPLE`, `PURPOSE_EXAMPLE`, `EXAMPLE_VERB`).
 
-## Sent to the maker (`vendorContext`, 49 questions)
+## Other onboarding candidates (9 questions, not in the app)
 
-### 1. identifierData × coreFunctionality
+Notebook 02 also wrote these 9 candidate questions, so 114 in all: 3 facts about the household and 6 about one flow a researched real device declares. Notebook 05 could pick any of the 114 for the decision tree, but it picked none of these, so they are not in `export/onboarding.json` and the app never asks them. They are listed here as notebook 02 words them (`data/questions.json`), with the options it gives them.
+
+### 1. Fact: `devices`
+
+> How many smart devices are in your home?
+
+- Options: 1-3 / 4-7 / 8-15 / 16+
+- [ ] OK
+- Notes:
+
+### 2. Fact: `household_size`
+
+> How many people live in your home?
+
+- Options: 1 / 2 / 3-4 / 5+
+- [ ] OK
+- Notes:
+
+### 3. Fact: `age_band`
+
+> What is your age?
+
+- Options: 18-29 / 30-44 / 45-64 / 65+
+- [ ] OK
+- Notes:
+
+### 4. Real device: `real_video_cloud`
+
+> Would you let a device send video or audio from your home to its maker's cloud, so you can use it remotely?
+
+- Options: No / Only with limits / Yes
+- The flow it is about: contentData × coreFunctionality × transfer × participantGenerated × vendorContext
+- [ ] OK
+- Notes:
+
+### 5. Real device: `real_location_home_away`
+
+> Would you let a device's maker use your phone's location to know when you are home or away?
+
+- Options: No / Only with limits / Yes
+- The flow it is about: locationData × coreFunctionality × collection × participantObserved × vendorContext
+- [ ] OK
+- Notes:
+
+### 6. Real device: `real_usage_improve`
+
+> Would you let a device send how you use it to its maker to improve their products?
+
+- Options: No / Only with limits / Yes
+- The flow it is about: usageData × analyticsAndImprovement × transfer × participantGenerated × vendorContext
+- [ ] OK
+- Notes:
+
+### 7. Real device: `real_profile_ads`
+
+> Would you let a device's maker use a profile of how you use it to show you ads?
+
+- Options: No / Only with limits / Yes
+- The flow it is about: profileData × advertisingAndMarketing × use × derivedFromPriorData × vendorContext
+- [ ] OK
+- Notes:
+
+### 8. Real device: `real_viewing_advertisers`
+
+> Would you let a device's maker share how you use it with advertisers?
+
+- Options: No / Only with limits / Yes
+- The flow it is about: usageData × advertisingAndMarketing × transfer × vendorProvided × thirdPartyContext
+- [ ] OK
+- Notes:
+
+### 9. Real device: `real_personalized_heating`
+
+> Would you let a smart device use who is home and readings from your home to personalize how it works, without the data leaving your home?
+
+- Options: No / Only with limits / Yes
+- The flow it is about: sensorData × personalization × use × derivedFromPriorData × householdContext
+- [ ] OK
+- Notes:
+
+## The 105 situation questions
+
+### Sent to the maker (`vendorContext`, 49 questions)
+
+#### 1. identifierData × coreFunctionality
 
 `cell_identifierData_coreFunctionality_vendorContext` · Refine only (never asked in onboarding)
 
@@ -20,7 +104,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 2. identifierData × personalization
+#### 2. identifierData × personalization
 
 `cell_identifierData_personalization_vendorContext` · Refine only (never asked in onboarding)
 
@@ -31,7 +115,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 3. identifierData × communicationsAndNotifications
+#### 3. identifierData × communicationsAndNotifications
 
 `cell_identifierData_communicationsAndNotifications_vendorContext` · Onboarding, follow-up (6 of 57 paths)
 
@@ -42,7 +126,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 4. identifierData × security
+#### 4. identifierData × security
 
 `cell_identifierData_security_vendorContext` · Onboarding, decision tree (question 3 on its path)
 
@@ -53,7 +137,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 5. identifierData × diagnosticsAndMaintenance
+#### 5. identifierData × diagnosticsAndMaintenance
 
 `cell_identifierData_diagnosticsAndMaintenance_vendorContext` · Onboarding, follow-up (6 of 57 paths)
 
@@ -64,7 +148,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 6. identifierData × analyticsAndImprovement
+#### 6. identifierData × analyticsAndImprovement
 
 `cell_identifierData_analyticsAndImprovement_vendorContext` · Onboarding, follow-up (8 of 57 paths)
 
@@ -75,7 +159,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 7. identifierData × advertisingAndMarketing
+#### 7. identifierData × advertisingAndMarketing
 
 `cell_identifierData_advertisingAndMarketing_vendorContext` · Refine only (never asked in onboarding)
 
@@ -86,7 +170,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 8. profileData × coreFunctionality
+#### 8. profileData × coreFunctionality
 
 `cell_profileData_coreFunctionality_vendorContext` · Onboarding, decision tree (question 4 on its path)
 
@@ -100,7 +184,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 9. profileData × personalization
+#### 9. profileData × personalization
 
 `cell_profileData_personalization_vendorContext` · Onboarding, follow-up (7 of 57 paths)
 
@@ -114,7 +198,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 10. profileData × communicationsAndNotifications
+#### 10. profileData × communicationsAndNotifications
 
 `cell_profileData_communicationsAndNotifications_vendorContext` · Onboarding, follow-up (6 of 57 paths)
 
@@ -128,7 +212,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 11. profileData × security
+#### 11. profileData × security
 
 `cell_profileData_security_vendorContext` · Onboarding, decision tree (question 5 on its path)
 
@@ -142,7 +226,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 12. profileData × diagnosticsAndMaintenance
+#### 12. profileData × diagnosticsAndMaintenance
 
 `cell_profileData_diagnosticsAndMaintenance_vendorContext` · Onboarding, decision tree (question 5 on its path)
 
@@ -156,7 +240,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 13. profileData × analyticsAndImprovement
+#### 13. profileData × analyticsAndImprovement
 
 `cell_profileData_analyticsAndImprovement_vendorContext` · Onboarding, follow-up (7 of 57 paths)
 
@@ -170,7 +254,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 14. profileData × advertisingAndMarketing
+#### 14. profileData × advertisingAndMarketing
 
 `cell_profileData_advertisingAndMarketing_vendorContext` · Refine only (never asked in onboarding)
 
@@ -184,7 +268,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 15. sensorData × coreFunctionality
+#### 15. sensorData × coreFunctionality
 
 `cell_sensorData_coreFunctionality_vendorContext` · Refine only (never asked in onboarding)
 
@@ -199,7 +283,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 16. sensorData × personalization
+#### 16. sensorData × personalization
 
 `cell_sensorData_personalization_vendorContext` · Onboarding, decision tree (question 6 on its path)
 
@@ -214,7 +298,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 17. sensorData × communicationsAndNotifications
+#### 17. sensorData × communicationsAndNotifications
 
 `cell_sensorData_communicationsAndNotifications_vendorContext` · Refine only (never asked in onboarding)
 
@@ -229,7 +313,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 18. sensorData × security
+#### 18. sensorData × security
 
 `cell_sensorData_security_vendorContext` · Refine only (never asked in onboarding)
 
@@ -244,7 +328,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 19. sensorData × diagnosticsAndMaintenance
+#### 19. sensorData × diagnosticsAndMaintenance
 
 `cell_sensorData_diagnosticsAndMaintenance_vendorContext` · Onboarding, decision tree (question 6 on its path)
 
@@ -259,7 +343,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 20. sensorData × analyticsAndImprovement
+#### 20. sensorData × analyticsAndImprovement
 
 `cell_sensorData_analyticsAndImprovement_vendorContext` · Onboarding, follow-up (14 of 57 paths)
 
@@ -274,7 +358,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 21. sensorData × advertisingAndMarketing
+#### 21. sensorData × advertisingAndMarketing
 
 `cell_sensorData_advertisingAndMarketing_vendorContext` · Onboarding, decision tree (question 6 on its path)
 
@@ -289,7 +373,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 22. contentData × coreFunctionality
+#### 22. contentData × coreFunctionality
 
 `cell_contentData_coreFunctionality_vendorContext` · Onboarding, decision tree (question 6 on its path)
 
@@ -304,7 +388,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 23. contentData × personalization
+#### 23. contentData × personalization
 
 `cell_contentData_personalization_vendorContext` · Onboarding, decision tree (question 3 on its path)
 
@@ -319,7 +403,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 24. contentData × communicationsAndNotifications
+#### 24. contentData × communicationsAndNotifications
 
 `cell_contentData_communicationsAndNotifications_vendorContext` · Onboarding, follow-up (9 of 57 paths)
 
@@ -334,7 +418,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 25. contentData × security
+#### 25. contentData × security
 
 `cell_contentData_security_vendorContext` · Onboarding, decision tree (question 6 on its path)
 
@@ -349,7 +433,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 26. contentData × diagnosticsAndMaintenance
+#### 26. contentData × diagnosticsAndMaintenance
 
 `cell_contentData_diagnosticsAndMaintenance_vendorContext` · Onboarding, decision tree (question 5 on its path)
 
@@ -364,7 +448,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 27. contentData × analyticsAndImprovement
+#### 27. contentData × analyticsAndImprovement
 
 `cell_contentData_analyticsAndImprovement_vendorContext` · Onboarding, follow-up (5 of 57 paths)
 
@@ -379,7 +463,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 28. contentData × advertisingAndMarketing
+#### 28. contentData × advertisingAndMarketing
 
 `cell_contentData_advertisingAndMarketing_vendorContext` · Refine only (never asked in onboarding)
 
@@ -394,7 +478,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 29. locationData × coreFunctionality
+#### 29. locationData × coreFunctionality
 
 `cell_locationData_coreFunctionality_vendorContext` · Refine only (never asked in onboarding)
 
@@ -405,7 +489,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 30. locationData × personalization
+#### 30. locationData × personalization
 
 `cell_locationData_personalization_vendorContext` · Onboarding, follow-up (11 of 57 paths)
 
@@ -416,7 +500,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 31. locationData × communicationsAndNotifications
+#### 31. locationData × communicationsAndNotifications
 
 `cell_locationData_communicationsAndNotifications_vendorContext` · Onboarding, decision tree (question 6 on its path)
 
@@ -427,7 +511,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 32. locationData × security
+#### 32. locationData × security
 
 `cell_locationData_security_vendorContext` · Onboarding, decision tree (question 3 on its path)
 
@@ -438,7 +522,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 33. locationData × diagnosticsAndMaintenance
+#### 33. locationData × diagnosticsAndMaintenance
 
 `cell_locationData_diagnosticsAndMaintenance_vendorContext` · Onboarding, follow-up (8 of 57 paths)
 
@@ -449,7 +533,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 34. locationData × analyticsAndImprovement
+#### 34. locationData × analyticsAndImprovement
 
 `cell_locationData_analyticsAndImprovement_vendorContext` · Onboarding, follow-up (10 of 57 paths)
 
@@ -460,7 +544,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 35. locationData × advertisingAndMarketing
+#### 35. locationData × advertisingAndMarketing
 
 `cell_locationData_advertisingAndMarketing_vendorContext` · Refine only (never asked in onboarding)
 
@@ -471,7 +555,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 36. deviceAndNetworkData × coreFunctionality
+#### 36. deviceAndNetworkData × coreFunctionality
 
 `cell_deviceAndNetworkData_coreFunctionality_vendorContext` · Refine only (never asked in onboarding)
 
@@ -482,7 +566,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 37. deviceAndNetworkData × personalization
+#### 37. deviceAndNetworkData × personalization
 
 `cell_deviceAndNetworkData_personalization_vendorContext` · Onboarding, follow-up (10 of 57 paths)
 
@@ -493,7 +577,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 38. deviceAndNetworkData × communicationsAndNotifications
+#### 38. deviceAndNetworkData × communicationsAndNotifications
 
 `cell_deviceAndNetworkData_communicationsAndNotifications_vendorContext` · Onboarding, follow-up (7 of 57 paths)
 
@@ -504,7 +588,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 39. deviceAndNetworkData × security
+#### 39. deviceAndNetworkData × security
 
 `cell_deviceAndNetworkData_security_vendorContext` · Refine only (never asked in onboarding)
 
@@ -515,7 +599,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 40. deviceAndNetworkData × diagnosticsAndMaintenance
+#### 40. deviceAndNetworkData × diagnosticsAndMaintenance
 
 `cell_deviceAndNetworkData_diagnosticsAndMaintenance_vendorContext` · Onboarding, follow-up (6 of 57 paths)
 
@@ -526,7 +610,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 41. deviceAndNetworkData × analyticsAndImprovement
+#### 41. deviceAndNetworkData × analyticsAndImprovement
 
 `cell_deviceAndNetworkData_analyticsAndImprovement_vendorContext` · Onboarding, follow-up (15 of 57 paths)
 
@@ -537,7 +621,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 42. deviceAndNetworkData × advertisingAndMarketing
+#### 42. deviceAndNetworkData × advertisingAndMarketing
 
 `cell_deviceAndNetworkData_advertisingAndMarketing_vendorContext` · Onboarding, decision tree (question 3 on its path)
 
@@ -548,7 +632,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 43. usageData × coreFunctionality
+#### 43. usageData × coreFunctionality
 
 `cell_usageData_coreFunctionality_vendorContext` · Onboarding, follow-up (9 of 57 paths)
 
@@ -564,7 +648,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 44. usageData × personalization
+#### 44. usageData × personalization
 
 `cell_usageData_personalization_vendorContext` · Onboarding, follow-up (12 of 57 paths)
 
@@ -580,7 +664,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 45. usageData × communicationsAndNotifications
+#### 45. usageData × communicationsAndNotifications
 
 `cell_usageData_communicationsAndNotifications_vendorContext` · Onboarding, decision tree (question 1 on its path)
 
@@ -596,7 +680,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 46. usageData × security
+#### 46. usageData × security
 
 `cell_usageData_security_vendorContext` · Onboarding, follow-up (14 of 57 paths)
 
@@ -612,7 +696,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 47. usageData × diagnosticsAndMaintenance
+#### 47. usageData × diagnosticsAndMaintenance
 
 `cell_usageData_diagnosticsAndMaintenance_vendorContext` · Onboarding, follow-up (6 of 57 paths)
 
@@ -628,7 +712,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 48. usageData × analyticsAndImprovement
+#### 48. usageData × analyticsAndImprovement
 
 `cell_usageData_analyticsAndImprovement_vendorContext` · Onboarding, decision tree (question 5 on its path)
 
@@ -644,7 +728,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 49. usageData × advertisingAndMarketing
+#### 49. usageData × advertisingAndMarketing
 
 `cell_usageData_advertisingAndMarketing_vendorContext` · Refine only (never asked in onboarding)
 
@@ -660,9 +744,9 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-## Passed on to other companies (`thirdPartyContext`, 28 questions)
+### Passed on to other companies (`thirdPartyContext`, 28 questions)
 
-### 50. identifierData × personalization
+#### 50. identifierData × personalization
 
 `cell_identifierData_personalization_thirdPartyContext` · Refine only (never asked in onboarding)
 
@@ -673,7 +757,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 51. identifierData × diagnosticsAndMaintenance
+#### 51. identifierData × diagnosticsAndMaintenance
 
 `cell_identifierData_diagnosticsAndMaintenance_thirdPartyContext` · Onboarding, decision tree (question 6 on its path)
 
@@ -684,7 +768,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 52. identifierData × analyticsAndImprovement
+#### 52. identifierData × analyticsAndImprovement
 
 `cell_identifierData_analyticsAndImprovement_thirdPartyContext` · Onboarding, decision tree (question 2 on its path)
 
@@ -695,7 +779,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 53. identifierData × advertisingAndMarketing
+#### 53. identifierData × advertisingAndMarketing
 
 `cell_identifierData_advertisingAndMarketing_thirdPartyContext` · Refine only (never asked in onboarding)
 
@@ -706,7 +790,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 54. profileData × personalization
+#### 54. profileData × personalization
 
 `cell_profileData_personalization_thirdPartyContext` · Onboarding, decision tree (question 4 on its path)
 
@@ -720,7 +804,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 55. profileData × diagnosticsAndMaintenance
+#### 55. profileData × diagnosticsAndMaintenance
 
 `cell_profileData_diagnosticsAndMaintenance_thirdPartyContext` · Onboarding, decision tree (question 4 on its path)
 
@@ -734,7 +818,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 56. profileData × analyticsAndImprovement
+#### 56. profileData × analyticsAndImprovement
 
 `cell_profileData_analyticsAndImprovement_thirdPartyContext` · Onboarding, decision tree (question 5 on its path)
 
@@ -748,7 +832,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 57. profileData × advertisingAndMarketing
+#### 57. profileData × advertisingAndMarketing
 
 `cell_profileData_advertisingAndMarketing_thirdPartyContext` · Refine only (never asked in onboarding)
 
@@ -762,7 +846,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 58. sensorData × personalization
+#### 58. sensorData × personalization
 
 `cell_sensorData_personalization_thirdPartyContext` · Onboarding, follow-up (9 of 57 paths)
 
@@ -777,7 +861,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 59. sensorData × diagnosticsAndMaintenance
+#### 59. sensorData × diagnosticsAndMaintenance
 
 `cell_sensorData_diagnosticsAndMaintenance_thirdPartyContext` · Onboarding, decision tree (question 2 on its path)
 
@@ -792,7 +876,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 60. sensorData × analyticsAndImprovement
+#### 60. sensorData × analyticsAndImprovement
 
 `cell_sensorData_analyticsAndImprovement_thirdPartyContext` · Onboarding, follow-up (17 of 57 paths)
 
@@ -807,7 +891,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 61. sensorData × advertisingAndMarketing
+#### 61. sensorData × advertisingAndMarketing
 
 `cell_sensorData_advertisingAndMarketing_thirdPartyContext` · Onboarding, decision tree (question 4 on its path)
 
@@ -822,7 +906,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 62. contentData × personalization
+#### 62. contentData × personalization
 
 `cell_contentData_personalization_thirdPartyContext` · Refine only (never asked in onboarding)
 
@@ -837,7 +921,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 63. contentData × diagnosticsAndMaintenance
+#### 63. contentData × diagnosticsAndMaintenance
 
 `cell_contentData_diagnosticsAndMaintenance_thirdPartyContext` · Onboarding, follow-up (3 of 57 paths)
 
@@ -852,7 +936,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 64. contentData × analyticsAndImprovement
+#### 64. contentData × analyticsAndImprovement
 
 `cell_contentData_analyticsAndImprovement_thirdPartyContext` · Onboarding, decision tree (question 6 on its path)
 
@@ -867,7 +951,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 65. contentData × advertisingAndMarketing
+#### 65. contentData × advertisingAndMarketing
 
 `cell_contentData_advertisingAndMarketing_thirdPartyContext` · Refine only (never asked in onboarding)
 
@@ -882,7 +966,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 66. locationData × personalization
+#### 66. locationData × personalization
 
 `cell_locationData_personalization_thirdPartyContext` · Onboarding, decision tree (question 5 on its path)
 
@@ -893,7 +977,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 67. locationData × diagnosticsAndMaintenance
+#### 67. locationData × diagnosticsAndMaintenance
 
 `cell_locationData_diagnosticsAndMaintenance_thirdPartyContext` · Onboarding, decision tree (question 4 on its path)
 
@@ -904,7 +988,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 68. locationData × analyticsAndImprovement
+#### 68. locationData × analyticsAndImprovement
 
 `cell_locationData_analyticsAndImprovement_thirdPartyContext` · Onboarding, follow-up (4 of 57 paths)
 
@@ -915,7 +999,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 69. locationData × advertisingAndMarketing
+#### 69. locationData × advertisingAndMarketing
 
 `cell_locationData_advertisingAndMarketing_thirdPartyContext` · Refine only (never asked in onboarding)
 
@@ -926,7 +1010,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 70. deviceAndNetworkData × personalization
+#### 70. deviceAndNetworkData × personalization
 
 `cell_deviceAndNetworkData_personalization_thirdPartyContext` · Onboarding, decision tree (question 5 on its path)
 
@@ -937,7 +1021,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 71. deviceAndNetworkData × diagnosticsAndMaintenance
+#### 71. deviceAndNetworkData × diagnosticsAndMaintenance
 
 `cell_deviceAndNetworkData_diagnosticsAndMaintenance_thirdPartyContext` · Onboarding, follow-up (17 of 57 paths)
 
@@ -948,7 +1032,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 72. deviceAndNetworkData × analyticsAndImprovement
+#### 72. deviceAndNetworkData × analyticsAndImprovement
 
 `cell_deviceAndNetworkData_analyticsAndImprovement_thirdPartyContext` · Onboarding, decision tree (question 4 on its path)
 
@@ -959,7 +1043,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 73. deviceAndNetworkData × advertisingAndMarketing
+#### 73. deviceAndNetworkData × advertisingAndMarketing
 
 `cell_deviceAndNetworkData_advertisingAndMarketing_thirdPartyContext` · Onboarding, decision tree (question 5 on its path)
 
@@ -970,7 +1054,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 74. usageData × personalization
+#### 74. usageData × personalization
 
 `cell_usageData_personalization_thirdPartyContext` · Onboarding, follow-up (5 of 57 paths)
 
@@ -986,7 +1070,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 75. usageData × diagnosticsAndMaintenance
+#### 75. usageData × diagnosticsAndMaintenance
 
 `cell_usageData_diagnosticsAndMaintenance_thirdPartyContext` · Onboarding, follow-up (13 of 57 paths)
 
@@ -1002,7 +1086,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 76. usageData × analyticsAndImprovement
+#### 76. usageData × analyticsAndImprovement
 
 `cell_usageData_analyticsAndImprovement_thirdPartyContext` · Refine only (never asked in onboarding)
 
@@ -1018,7 +1102,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 77. usageData × advertisingAndMarketing
+#### 77. usageData × advertisingAndMarketing
 
 `cell_usageData_advertisingAndMarketing_thirdPartyContext` · Refine only (never asked in onboarding)
 
@@ -1034,9 +1118,9 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-## Stays in the home (`householdContext`, 28 questions)
+### Stays in the home (`householdContext`, 28 questions)
 
-### 78. identifierData × coreFunctionality
+#### 78. identifierData × coreFunctionality
 
 `cell_identifierData_coreFunctionality_householdContext` · Refine only (never asked in onboarding)
 
@@ -1047,7 +1131,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 79. identifierData × personalization
+#### 79. identifierData × personalization
 
 `cell_identifierData_personalization_householdContext` · Onboarding, decision tree (question 4 on its path)
 
@@ -1058,7 +1142,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 80. identifierData × communicationsAndNotifications
+#### 80. identifierData × communicationsAndNotifications
 
 `cell_identifierData_communicationsAndNotifications_householdContext` · Onboarding, decision tree (question 5 on its path)
 
@@ -1069,7 +1153,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 81. identifierData × security
+#### 81. identifierData × security
 
 `cell_identifierData_security_householdContext` · Refine only (never asked in onboarding)
 
@@ -1080,7 +1164,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 82. profileData × coreFunctionality
+#### 82. profileData × coreFunctionality
 
 `cell_profileData_coreFunctionality_householdContext` · Refine only (never asked in onboarding)
 
@@ -1094,7 +1178,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 83. profileData × personalization
+#### 83. profileData × personalization
 
 `cell_profileData_personalization_householdContext` · Onboarding, follow-up (8 of 57 paths)
 
@@ -1108,7 +1192,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 84. profileData × communicationsAndNotifications
+#### 84. profileData × communicationsAndNotifications
 
 `cell_profileData_communicationsAndNotifications_householdContext` · Onboarding, decision tree (question 6 on its path)
 
@@ -1122,7 +1206,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 85. profileData × security
+#### 85. profileData × security
 
 `cell_profileData_security_householdContext` · Onboarding, decision tree (question 6 on its path)
 
@@ -1136,7 +1220,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 86. sensorData × coreFunctionality
+#### 86. sensorData × coreFunctionality
 
 `cell_sensorData_coreFunctionality_householdContext` · Refine only (never asked in onboarding)
 
@@ -1151,7 +1235,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 87. sensorData × personalization
+#### 87. sensorData × personalization
 
 `cell_sensorData_personalization_householdContext` · Refine only (never asked in onboarding)
 
@@ -1166,7 +1250,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 88. sensorData × communicationsAndNotifications
+#### 88. sensorData × communicationsAndNotifications
 
 `cell_sensorData_communicationsAndNotifications_householdContext` · Refine only (never asked in onboarding)
 
@@ -1181,7 +1265,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 89. sensorData × security
+#### 89. sensorData × security
 
 `cell_sensorData_security_householdContext` · Refine only (never asked in onboarding)
 
@@ -1196,7 +1280,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 90. contentData × coreFunctionality
+#### 90. contentData × coreFunctionality
 
 `cell_contentData_coreFunctionality_householdContext` · Refine only (never asked in onboarding)
 
@@ -1211,7 +1295,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 91. contentData × personalization
+#### 91. contentData × personalization
 
 `cell_contentData_personalization_householdContext` · Onboarding, follow-up (11 of 57 paths)
 
@@ -1226,7 +1310,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 92. contentData × communicationsAndNotifications
+#### 92. contentData × communicationsAndNotifications
 
 `cell_contentData_communicationsAndNotifications_householdContext` · Onboarding, decision tree (question 6 on its path)
 
@@ -1241,7 +1325,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 93. contentData × security
+#### 93. contentData × security
 
 `cell_contentData_security_householdContext` · Refine only (never asked in onboarding)
 
@@ -1256,7 +1340,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 94. locationData × coreFunctionality
+#### 94. locationData × coreFunctionality
 
 `cell_locationData_coreFunctionality_householdContext` · Refine only (never asked in onboarding)
 
@@ -1267,7 +1351,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 95. locationData × personalization
+#### 95. locationData × personalization
 
 `cell_locationData_personalization_householdContext` · Onboarding, decision tree (question 5 on its path)
 
@@ -1278,7 +1362,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 96. locationData × communicationsAndNotifications
+#### 96. locationData × communicationsAndNotifications
 
 `cell_locationData_communicationsAndNotifications_householdContext` · Onboarding, follow-up (13 of 57 paths)
 
@@ -1289,7 +1373,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 97. locationData × security
+#### 97. locationData × security
 
 `cell_locationData_security_householdContext` · Refine only (never asked in onboarding)
 
@@ -1300,7 +1384,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 98. deviceAndNetworkData × coreFunctionality
+#### 98. deviceAndNetworkData × coreFunctionality
 
 `cell_deviceAndNetworkData_coreFunctionality_householdContext` · Refine only (never asked in onboarding)
 
@@ -1311,7 +1395,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 99. deviceAndNetworkData × personalization
+#### 99. deviceAndNetworkData × personalization
 
 `cell_deviceAndNetworkData_personalization_householdContext` · Onboarding, decision tree (question 6 on its path)
 
@@ -1322,7 +1406,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 100. deviceAndNetworkData × communicationsAndNotifications
+#### 100. deviceAndNetworkData × communicationsAndNotifications
 
 `cell_deviceAndNetworkData_communicationsAndNotifications_householdContext` · Refine only (never asked in onboarding)
 
@@ -1333,7 +1417,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 101. deviceAndNetworkData × security
+#### 101. deviceAndNetworkData × security
 
 `cell_deviceAndNetworkData_security_householdContext` · Refine only (never asked in onboarding)
 
@@ -1344,7 +1428,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 102. usageData × coreFunctionality
+#### 102. usageData × coreFunctionality
 
 `cell_usageData_coreFunctionality_householdContext` · Refine only (never asked in onboarding)
 
@@ -1360,7 +1444,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 103. usageData × personalization
+#### 103. usageData × personalization
 
 `cell_usageData_personalization_householdContext` · Onboarding, follow-up (15 of 57 paths)
 
@@ -1376,7 +1460,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 104. usageData × communicationsAndNotifications
+#### 104. usageData × communicationsAndNotifications
 
 `cell_usageData_communicationsAndNotifications_householdContext` · Onboarding, decision tree (question 5 on its path)
 
@@ -1392,7 +1476,7 @@ All 105 situation questions, as the app shows them. Generated on 2026-11-04 from
 - [ ] OK
 - Notes:
 
-### 105. usageData × security
+#### 105. usageData × security
 
 `cell_usageData_security_householdContext` · Refine only (never asked in onboarding)
 
